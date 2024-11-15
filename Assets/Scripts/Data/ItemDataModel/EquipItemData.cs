@@ -1,3 +1,5 @@
+using EnumTypes;
+
 public class EquipItemData : ItemData
 {
     public EquipType equipType;
