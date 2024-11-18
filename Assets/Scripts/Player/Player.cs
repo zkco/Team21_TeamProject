@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
         Collider = GetComponent<Collider2D>();
 
         //Renderer.sprite = Status.PlayerSprite;
-        Controller.Speed = Status.Speed;
 
     }
 }

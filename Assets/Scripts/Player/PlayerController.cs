@@ -9,7 +9,7 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerController : MonoBehaviour
 {
-    private readonly WaitForSeconds wait = new WaitForSeconds(0.7f);
+    private readonly WaitForSeconds wait = new WaitForSeconds(0.5f);
 
     public event Action AttackAction;
     public Player Player;
