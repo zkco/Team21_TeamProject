@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public event Action AttackAction;
     public Player Player;
+    private Animator _animator;
     private Camera _cam;
 
     //캐릭터 반전 관련 옵션(Look)
@@ -27,7 +28,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask Platform;
     private bool _downJump;
 
-
     private void Awake()
     {
         _cam = Camera.main;
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _animator = Player.Animator;
         StartCoroutine(CoPlayerChecker());
     }
 
@@ -99,8 +100,11 @@ public class PlayerController : MonoBehaviour
 
     private void DownJump()
     {
-        Player.Collider.isTrigger = true;
-        _downJump = true;
+        if(OnGround() == true)
+        {
+            Player.Collider.isTrigger = true;
+            _downJump = true;
+        }
     }
 
     private bool OnGround()
@@ -119,11 +123,13 @@ public class PlayerController : MonoBehaviour
     {
         if (_moveDir != 0)
         {
+            _animator.SetBool("Running", true);
             Vector2 dir = new Vector2(_moveDir * Speed, Player.Rigidbody.velocity.y);
             Player.Rigidbody.velocity = dir;
         }
         else
         {
+            _animator.SetBool("Running", false);
             Vector2 dir = new Vector2(0, Player.Rigidbody.velocity.y);
             Player.Rigidbody.velocity = dir;
         }
