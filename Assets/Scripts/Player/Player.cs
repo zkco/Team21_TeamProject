@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public PlayerController Controller;
     public Transform WeaponPivot;
     public Rigidbody2D Rigidbody;
+    public Collider2D Collider;
     //public PlayerCondition Condition;
     //public Weapon weapon;
     //public Item curItem;
@@ -22,5 +23,6 @@ public class Player : MonoBehaviour
         Renderer = GetComponentInChildren<SpriteRenderer>();
         WeaponPivot = GameObject.Find("WeaponPivot").transform;
         Rigidbody = GetComponent<Rigidbody2D>();
+        Collider = GetComponent<Collider2D>();
     }
 }
