@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerStatus : MonoBehaviour
     public float AttackRate;
     public int Gold;
     public Sprite PlayerSprite;
+    public Sprite PlayerWeaponsprite;
 
     public void LevelUp()
     {
@@ -28,33 +30,72 @@ public class PlayerStatus : MonoBehaviour
     }
 
     /// <summary>
-    /// target에 value만큼 값을 추가
+    /// target에 value만큼 값을 즉시 추가(-로 입력하여 뺄셈가능)
     /// </summary>
     /// <param name="target">(max)hp,mp,exp,damage,gold 등 전부 소문자로</param>
     /// <param name="value">추가할 정수 값</param>
-    public void AddValueTo(string target, int value)
+    public void AddValueTemp(string target, float value)
     {
         switch(target)
         {
-            case "hp": Hp += value; break;
-            case "maxhp": MaxHp += value; break;
-            case "mp": Mp += value; break;
-            case "maxmp": MaxMp += value; break;
-            case "exp": Exp += value; break;
-            case "maxexp": MaxExp += value; break;
-            case "damage": Damage += value; break;
-            case "gold": Gold += value; break;
+            case "hp": Hp += (int)value; break;
+            case "maxhp": MaxHp += (int)value; break;
+            case "mp": Mp += (int)value; break;
+            case "maxmp": MaxMp += (int)value; break;
+            case "exp": Exp += (int)value; break;
+            case "maxexp": MaxExp += (int)value; break;
+            case "damage": Damage += (int)value; break;
+            case "gold": Gold += (int)value; break;
             case "speed": Speed += value; break;
-            default: Debug.Log(""); break;
+            default: Debug.Log("Target Error"); break;
         }
     }
 
     /// <summary>
-    /// 
+    /// time값 만큼 매 초마다 실행(-로 입력하여 뺄셈가능)
     /// </summary>
-    /// <param name="parameter">Hp,Mp,Exp,Damage,Gold</param>
-    public void ReduceValueTo(int parameter)
+    /// <param name="target">(max)hp,mp,exp,damage,gold 등 전부 소문자로</param>
+    /// <param name="value">time초 동안 추가할 값</param>
+    /// <param name="time">지속 시간</param>
+    public void AddValueDur(string target, float value, float time)
     {
+        StartCoroutine(CoAddValueDur(target, value, time));
+    }
 
+    /// <summary>
+    /// target에 value만큼 값을 천천히 추가(-로 입력하여 뺄셈가능)
+    /// </summary>
+    /// <param name="target">(max)hp,mp,exp,damage,gold 등 전부 소문자로</param>
+    /// <param name="value">매 초마다 추가할 값</param>
+    /// <param name="delay">delay 초마다 값 만큼 변화</param>
+    /// <param name="time">지속 시간</param>
+    public void AddValueDur(string target, float value, float delay, float time)
+    {
+        StartCoroutine(CoAddValueDur(target, value, delay, time));
+    }
+
+    private IEnumerator CoAddValueDur(string target, float value, float delay, float time)
+    {
+        WaitForSeconds wait = new WaitForSeconds(delay);
+        float durtime = 0;
+        while (durtime <= time)
+        {
+            durtime += Time.deltaTime;
+            AddValueTemp(target, value);
+            yield return wait;
+        }
+        yield return null;
+    }
+
+    private IEnumerator CoAddValueDur(string target, float value, float time)
+    {
+        WaitForSeconds wait = new WaitForSeconds(1f);
+        float durtime = 0;
+        while (durtime <= time)
+        {
+            AddValueTemp(target, value/time);
+            yield return wait;
+        }
+        yield return null;
     }
 }

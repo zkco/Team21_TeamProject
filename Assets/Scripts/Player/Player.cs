@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public Collider2D Collider;
     public PlayerStatus Status;
     //public PlayerCondition Condition;
-    //public Weapon weapon;
-    //public Item curItem;
+    //public Weapon weapon; //웨폰에서 작성
+    //public Item curItem; //아이템에서 작성
     //public Inventory Inventory;
 
     private void Awake()
