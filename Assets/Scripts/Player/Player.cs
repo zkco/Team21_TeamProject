@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Transform WeaponPivot;
     public Rigidbody2D Rigidbody;
     public Collider2D Collider;
+    public PlayerStatus Status;
     //public PlayerCondition Condition;
     //public Weapon weapon;
     //public Item curItem;
@@ -24,5 +25,9 @@ public class Player : MonoBehaviour
         WeaponPivot = GameObject.Find("WeaponPivot").transform;
         Rigidbody = GetComponent<Rigidbody2D>();
         Collider = GetComponent<Collider2D>();
+
+        Renderer.sprite = Status.PlayerSprite;
+        Controller.Speed = Status.Speed;
+
     }
 }
