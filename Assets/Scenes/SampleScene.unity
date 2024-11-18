@@ -606,6 +606,7 @@ MonoBehaviour:
   WeaponPivot: {fileID: 0}
   Rigidbody: {fileID: 0}
   Collider: {fileID: 0}
+  Status: {fileID: 0}
 --- !u!114 &1497770372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,7 +625,6 @@ MonoBehaviour:
   Platform:
     serializedVersion: 2
     m_Bits: 128
-  jumpCount: 0
 --- !u!70 &1497770373
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
