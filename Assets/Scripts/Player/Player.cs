@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Managers.PlayerManager.Player = this;
         Controller = GetComponent<PlayerController>();
         Animator = GetComponent<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
