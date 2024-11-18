@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Managers.PlayerManager.Player = this;
         Controller = GetComponent<PlayerController>();
         Animator = GetComponent<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
@@ -27,7 +28,6 @@ public class Player : MonoBehaviour
         Collider = GetComponent<Collider2D>();
 
         //Renderer.sprite = Status.PlayerSprite;
-        Controller.Speed = Status.Speed;
 
     }
 }

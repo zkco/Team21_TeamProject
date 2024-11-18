@@ -10,11 +10,14 @@ public sealed class Managers : MonoBehaviour
     public static UIManager UIManager { get { return instance.uiManager; } }
     public static SoundManager SoundManager { get { return instance.soundManager; } }
 
+    public static PlayerManager PlayerManager { get { return instance.playerManager; } }
+
     public static DataManager DataManager { get { return instance.dataManager; } }
     //여기 필드에 만들 매니저 인스턴스 작성 후 위에서 return 작성
     //이후 Init에서 CreateManager로 매니저 게임 실행 시 생성
     private UIManager uiManager;
     private SoundManager soundManager;
+    private PlayerManager playerManager;
     private DataManager dataManager;
 
 
@@ -37,6 +40,7 @@ public sealed class Managers : MonoBehaviour
 
         instance.uiManager = CreateManager<UIManager>(gameObject.transform);
         instance.soundManager = CreateManager<SoundManager>(gameObject.transform);
+        instance.playerManager = CreateManager<PlayerManager>(gameObject.transform);
         instance.dataManager = CreateManager<DataManager>(gameObject.transform);
     }
 
