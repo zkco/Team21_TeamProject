@@ -9,25 +9,25 @@ public class SoundManager : MonoBehaviour,IManager
     public AudioSource bgmSource;       //bgm전용 오디오 변수
 
     //sfx클립 저장해놓는 Dic
-    private Dictionary<Enum, AudioClip> clipDictionary = new Dictionary<Enum, AudioClip>();
+    private Dictionary<Enum, AudioClip> soundDictionary = new Dictionary<Enum, AudioClip>();
 
     /// <summary>
     /// SFX 재생 함수
     /// </summary>
-    public void PlaySFX(SfxType type)
+    public void PlaySFX(SFXType type)
     {
-        sfxSource.PlayOneShot(clipDictionary[type]);
+        sfxSource.PlayOneShot(soundDictionary[type]);
     }
 
     /// <summary>
     /// BGM 재생 함수
     /// </summary>
-    public void PlayBGM(BgmType type)
+    public void PlayBGM(BGMType type)
     {
-        if (bgmSource.clip == clipDictionary[type])
+        if (bgmSource.clip == soundDictionary[type])
             return;
 
-        bgmSource.clip = clipDictionary[type];
+        bgmSource.clip = soundDictionary[type];
         bgmSource.Play();
     }
     public void Init()
