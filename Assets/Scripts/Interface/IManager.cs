@@ -11,4 +11,3 @@ public interface IManager
     /// </summary>
     public void Init();
 }
-
