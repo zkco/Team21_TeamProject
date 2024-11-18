@@ -4,63 +4,66 @@ using Constants;
 
 public class DataManager : MonoBehaviour, IManager
 {
+    public static DataManager Instance;
+
     private DataBase<ConsumableItemData> consumableDb;
-    public DataBase<ConsumableItemData> ConsumableDb
+    public static DataBase<ConsumableItemData> ConsumableDb
     {
         get
         {
-            if(consumableDb == null)
+            if(Managers.DataManager.consumableDb == null)
             {
                 List<ConsumableItemData> list = new List<ConsumableItemData>();
                 // TODO: 소모품 데이터 불러오기
                 // Instance.consumableDb = new DataBase<ConsumableItemData>(list);
+                
             }
-            return consumableDb;
+            return Managers.DataManager.consumableDb;
         }
     }
 
     private DataBase<EquipItemData> equipDb;
-    public DataBase<EquipItemData> EquipDb
+    public static DataBase<EquipItemData> EquipDb
     {
         get
         {
-            if (equipDb == null)
+            if (Managers.DataManager.equipDb == null)
             {
                 List<EquipItemData> list = new List<EquipItemData>();
                 // TODO: 장비 데이터 불러오기
                 // Instance.equipDb = new DataBase<EquipItemData>(list);
             }
-            return equipDb;
+            return Managers.DataManager.equipDb;
         }
     }
 
     private DataBase<ProductData> productDb;
-    public DataBase <ProductData> ProductDb
+    public static DataBase <ProductData> ProductDb
     {
         get
         {
-            if (productDb == null)
+            if (Managers.DataManager.productDb == null)
             {
                 List<ProductData> list = new List<ProductData>();
                 // TODO: 상품 데이터 불러오기
                 // Instance.productDb = new DataBase<ProductData>(list);
             }
-            return productDb;
+            return Managers.DataManager.productDb;
         }
     }
 
     private DataBase<ShopData> shopDb;
-    public DataBase<ShopData> ShopDb
+    public static DataBase<ShopData> ShopDb
     {
         get
         {
-            if (shopDb == null)
+            if (Managers.DataManager.shopDb == null)
             {
                 List<ProductData> list = new List<ProductData>();
                 // TODO: 상점 데이터 불러오기
                 // Instance.shopDb = new DataBase<ProductData>(list);
             }
-            return shopDb;
+            return Managers.DataManager.shopDb;
             //return manager.Instance.DataManager.shopDb;
         }
     }
