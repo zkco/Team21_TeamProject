@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Look();
         CameraMove();
-        Debug.DrawRay(Player.transform.position, Vector2.down, Color.red);
+        Debug.DrawRay(new Vector2(Player.transform.position.x, Player.transform.position.y - 1f), Vector2.down, Color.red);
     }
 
     private IEnumerator CoPlayerChecker()
@@ -76,9 +76,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && OnGround() == true)
+        if (context.phase == InputActionPhase.Started)
         {
             Jump();
+            Debug.Log("2");
         }
     }
 
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
     private bool OnGround()
     {
         //Todo : 캐릭터 스프라이트 정해지고 나서 레이 갯수를 늘려서 스프라이트 끝에서 끝까지
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 0.5f), Vector2.down, 0.2f, Platform);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 1f), Vector2.down, 0.5f, Platform);
 
         if (hit.collider?.gameObject.layer == 7)
         {
@@ -137,7 +138,11 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        Player.Rigidbody.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+        if(OnGround() == true)
+        {
+            Player.Rigidbody.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+            Debug.Log("1");
+        }
     }
 
     private void Look()

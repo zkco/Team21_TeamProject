@@ -27,6 +27,5 @@ public class Player : MonoBehaviour
         Collider = GetComponent<Collider2D>();
         Animator = GetComponentInChildren<Animator>();
         //Renderer.sprite = Status.PlayerSprite;
-
     }
 }

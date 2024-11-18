@@ -14,6 +14,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
+
+
     /// <summary>
     /// code를 통해 슬롯에서 아이템을 받아옴
     /// </summary>
