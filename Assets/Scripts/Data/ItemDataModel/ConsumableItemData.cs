@@ -10,7 +10,6 @@ public class ConsumableItemData : ItemData
     public ConsumableItemData(int id, ItemType type, string name, string description, string iconPath, ConsumableType consumableType, List<ConsumableTarget> targets, float duration, List<float> values)
     {
         this.id = id;
-        this.type = type;
         this.name = name;
         this.description = description;
         this.iconPath = iconPath;

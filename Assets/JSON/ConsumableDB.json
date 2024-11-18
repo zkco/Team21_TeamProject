@@ -1,0 +1,32 @@
+{
+  "Items": [
+    {
+      "id": 1001,
+      "name": "HP포션",
+      "description": "체력을 소량 회복 시킵니다.",
+      "iconPath": "Sprite/Items/Consumables/Redpotion",
+      "consumableType": 0,
+      "targets": [
+        0
+      ],
+      "duration": 0,
+      "values": [
+        30
+      ]
+    },
+    {
+      "id": 1002,
+      "name": "MP포션",
+      "description": "마나를 소량 회복 시킵니다.",
+      "iconPath": "Sprite/Items/Consumables/Bluepotion",
+      "consumableType": 0,
+      "targets": [
+        1
+      ],
+      "duration": 0,
+      "values": [
+        30
+      ]
+    }
+  ]
+}

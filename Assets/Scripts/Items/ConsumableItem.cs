@@ -8,12 +8,12 @@ public class ConsumableItem : MonoBehaviour
 
     private void Start()
     {
-        //condition = Managers.instance. ..... // 현재 플레이어의 HP,MP 등 상태창 받아옴
+        status = Managers.PlayerManager.Player.Status;
     }
 
-    public void OnUse()
+    public void Use()       // 소모품 사용할 때 호출하는 함수
     {
-        if(data.consumableType == ConsumableType.Instant)
+        if(data.consumableType == ConsumableType.Instant)       // 즉발형일때
         {
             for (int i = 0; i < data.targets.Count; i++)
             {
@@ -32,7 +32,7 @@ public class ConsumableItem : MonoBehaviour
             }
         }
 
-        else    // if (data.consumableType == ConsumableType.Buff)
+        else    // if (data.consumableType == ConsumableType.Buff)  // 버프형일때
         {
             for (int i = 0; i < data.targets.Count; i++)
             {

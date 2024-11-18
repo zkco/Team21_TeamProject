@@ -5,16 +5,16 @@ public class EquipItem : MonoBehaviour
 {
     private EquipItemData data;
 
-    [SerializeField] private PlayerStatus status;
+    private Player player;
 
     private void Start()
     {
-        //status = Managers. .... 
+        player = Managers.PlayerManager.Player;
     }
 
-    public void Equip()
+    public void Equip()             // 장비 아이템 착용
     {
-        if(data.levelLimit > status.Lv)
+        if(data.levelLimit > player.Status.Lv)
         {
             Debug.Log("레벨이 낮아 착용할 수 없습니다.");
             return;
@@ -27,24 +27,24 @@ public class EquipItem : MonoBehaviour
         ChangeStatus(data.value);
     }
 
-    public void Unequip()
+    public void Unequip()           // 장비 아이템 해제
     {
         //status.equippedId[(int)data.equipType] = 0;
         ChangeStatus(-data.value);
     }
 
-    private void ChangeStatus(float value)
+    private void ChangeStatus(float value)      // 방어구 종류에 따라 스탯 변경
     {
         switch (data.equipType)
         {
             case EquipType.Weapon:
-                status.AddValueTemp("damage", value);
+                player.Status.AddValueTemp("damage", value);
                 break;
             case EquipType.Armor:
-                status.AddValueTemp("maxHP", value);
+                player.Status.AddValueTemp("maxHP", value);
                 break;
             case EquipType.Accessory:
-                status.AddValueTemp("maxMP", value);
+                player.Status.AddValueTemp("maxMP", value);
                 break;
         }
     }
