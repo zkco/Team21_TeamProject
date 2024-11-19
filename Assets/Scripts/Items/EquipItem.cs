@@ -4,12 +4,11 @@ using Unity.VisualScripting;
 public class EquipItem : Item
 {
     private EquipItemData data;
-    private Player player;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         base.ItemData = data;
-        player = Managers.PlayerManager.Player;
     }
 
     public override void Use()

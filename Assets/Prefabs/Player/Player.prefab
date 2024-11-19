@@ -232,6 +232,7 @@ MonoBehaviour:
   Collider: {fileID: 0}
   Status: {fileID: 0}
   Animator: {fileID: 0}
+  Inventory: {fileID: 0}
 --- !u!114 &4012965411288499073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +255,7 @@ MonoBehaviour:
   MaxExp: 0
   Speed: 0
   Damage: 0
-  AttackRate: 0
+  AttackRate: 1
   Gold: 0
   PlayerSprite: {fileID: 0}
   PlayerWeaponsprite: {fileID: 0}

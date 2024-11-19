@@ -11,6 +11,11 @@ public class Slot : MonoBehaviour
     public int code;
     public Image itemImage;
 
+    private void Start()
+    {
+        itemImage = GetComponentInChildren<Image>();
+    }
+
     public Item GetItem(int code)
     {
         if (this.code == code) return item;
@@ -21,13 +26,13 @@ public class Slot : MonoBehaviour
     {
         this.item = item;
     }
-
-    public void SetItem(int code)
-    {
-        //수정하여 사용 예정
-        string path = $"./item/{code}";
-        this.item = Resources.Load(path).GetComponent<Item>();
-    }
+        
+    //public void SetItem(int code)
+    //{
+    //    수정하여 사용 예정
+    //    string path = $"./item/{code}";
+    //    this.item = Resources.Load(path).GetComponent<Item>();
+    //}
 
     public void RemoveItem(int code)
     {
@@ -39,7 +44,16 @@ public class Slot : MonoBehaviour
     {
         if (item != null)
         {
-            //itemImage = item.
+            itemImage.sprite = Resources.Load<Sprite>(item.ItemData.iconPath);
         }
+        else if(item == null)
+        {
+            itemImage.sprite = null;
+        }
+    }
+
+    public int GetCode()
+    {
+        return code;
     }
 }

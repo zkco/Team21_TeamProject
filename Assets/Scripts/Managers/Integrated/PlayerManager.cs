@@ -6,7 +6,6 @@ public class PlayerManager : MonoBehaviour, IManager
 {
     public Player Player;
 
-
     public void Init()
     {
 

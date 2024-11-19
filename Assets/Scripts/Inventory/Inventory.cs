@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Slot> Slots = new List<Slot>();
+    public Queue<Slot> Slots = new Queue<Slot>();
 
-    private void Awake()
+    private void Start()
     {
         Slot[] slots = GetComponentsInChildren<Slot>();
         int i = 0;
         foreach (Slot slot in slots)
         {
-            Slots.Add(slot);
+            Slots.Enqueue(slot);
             slot.code = i;
             i++;
         }
