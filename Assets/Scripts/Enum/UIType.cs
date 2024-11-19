@@ -4,5 +4,9 @@
 public enum UIType
 {
     //여기에 프리팹과 이름이 같게 추가.
-    
+    ConditionPopup,
+    InventoryPopup,
+    SettingPopup,
+    ShopPopup,
+    StagePopup
 }
