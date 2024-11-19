@@ -1,17 +1,25 @@
 using UnityEngine;
 using EnumTypes;
 using Unity.VisualScripting;
-public class EquipItem : MonoBehaviour
+public class EquipItem : Item
 {
     private EquipItemData data;
 
-    private Player player;
-
-    private void Start()
+    protected override void Start()
     {
-        player = Managers.PlayerManager.Player;
+        base.Start();
+        base.ItemData = data;
     }
 
+    public override void Use()
+    {
+        Equip();
+    }
+
+    public void SetData(int itemId)
+    {
+        data = DataManager.EquipDb.Get(itemId);
+    }
     public void Equip()             // 장비 아이템 착용
     {
         if(data.levelLimit > player.Status.Lv)
