@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -151,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     private void DownJump()
     {
-        if (OnGround() == true)
+        if (OnGround() == true && OnPlatform() == true)
         {
             Player.Collider.isTrigger = true;
             _downJump = true;
@@ -161,7 +162,18 @@ public class PlayerController : MonoBehaviour
     private bool OnGround()
     {
         //Todo : 캐릭터 스프라이트 정해지고 나서 레이 갯수를 늘려서 스프라이트 끝에서 끝까지
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 1f), Vector2.down, 0.3f, Platform);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 1f), Vector2.down, 0.3f);
+
+        if (hit.collider?.gameObject != null)
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    private bool OnPlatform()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 1f), Vector2.down, 0.3f);
 
         if (hit.collider?.gameObject.layer == 7)
         {
@@ -235,8 +247,9 @@ public class PlayerController : MonoBehaviour
     {
         float Z = -10f;
         Vector3 TargetPosition = Player.transform.position;
+        TargetPosition.y = Player.transform.position.y + 2f;
         TargetPosition.z = Z;
-        _cam.transform.position = Vector3.Lerp(_cam.transform.position, TargetPosition, Time.deltaTime * 2);
+        _cam.transform.position = Vector3.Lerp(_cam.transform.position, TargetPosition, Time.deltaTime * 3f);
     }
 
     //피격 구현 시 구독
