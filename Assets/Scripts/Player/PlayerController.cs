@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -245,11 +246,10 @@ public class PlayerController : MonoBehaviour
     private void CameraMove()
     {
         float Z = -10f;
-        float Y = 0.2f;
         Vector3 TargetPosition = Player.transform.position;
+        TargetPosition.y = Player.transform.position.y + 2f;
         TargetPosition.z = Z;
-        TargetPosition.y = Y;
-        _cam.transform.position = Vector3.Lerp(_cam.transform.position, TargetPosition, Time.deltaTime * 2);
+        _cam.transform.position = Vector3.Lerp(_cam.transform.position, TargetPosition, Time.deltaTime * 3f);
     }
 
     //피격 구현 시 구독
