@@ -16,6 +16,10 @@ public class EquipItem : Item
         Equip();
     }
 
+    public void SetData(int itemId)
+    {
+        data = DataManager.EquipDb.Get(itemId);
+    }
     public void Equip()             // 장비 아이템 착용
     {
         if(data.levelLimit > player.Status.Lv)

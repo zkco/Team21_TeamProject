@@ -1,5 +1,7 @@
 using EnumTypes;
+using System;
 using System.Collections.Generic;
+[Serializable]
 public class ConsumableItemData : ItemData
 {
     public ConsumableType consumableType;
@@ -7,7 +9,7 @@ public class ConsumableItemData : ItemData
     public float duration;
     public List<float> values;
 
-    public ConsumableItemData(int id, ItemType type, string name, string description, string iconPath, ConsumableType consumableType, List<ConsumableTarget> targets, float duration, List<float> values)
+    public ConsumableItemData(int id, string name, string description, string iconPath, ConsumableType consumableType, List<ConsumableTarget> targets, float duration, List<float> values)
     {
         this.id = id;
         this.name = name;

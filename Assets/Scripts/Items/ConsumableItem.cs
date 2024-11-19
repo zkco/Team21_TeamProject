@@ -7,11 +7,16 @@ public class ConsumableItem : Item
 
     protected override void Start()
     {
-        base.Start();
-        base.ItemData = data;
+        
+        status = Managers.PlayerManager.Player.Status;
     }
 
-    public override void Use()       // 소모품 사용할 때 호출하는 함수
+    public void SetData(int itemId)
+    {
+        data = DataManager.ConsumableDb.Get(itemId);
+    }
+
+    public void Use()       // 소모품 사용할 때 호출하는 함수
     {
         if(data.consumableType == ConsumableType.Instant)       // 즉발형일때
         {

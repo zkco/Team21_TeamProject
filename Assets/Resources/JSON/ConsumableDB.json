@@ -1,5 +1,5 @@
 {
-  "Items": [
+  "items": [
     {
       "id": 1001,
       "name": "HP포션",
@@ -9,9 +9,9 @@
       "targets": [
         0
       ],
-      "duration": 0,
+      "duration": 0.0,
       "values": [
-        30
+        30.0
       ]
     },
     {
@@ -23,9 +23,9 @@
       "targets": [
         1
       ],
-      "duration": 0,
+      "duration": 0.0,
       "values": [
-        30
+        30.0
       ]
     }
   ]
