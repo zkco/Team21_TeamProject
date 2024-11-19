@@ -55,6 +55,7 @@ public sealed class Managers : MonoBehaviour
         T generic = gameObject.AddComponent<T>();
         gameObject.transform.parent = parent;
 
+        //이 코드를 통해 매니저가 처음 만들어질 때 Init을 실행시켜줌.
         generic.Init();
 
         return generic;
