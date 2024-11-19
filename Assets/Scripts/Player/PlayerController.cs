@@ -9,7 +9,7 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerController : MonoBehaviour
 {
-    private readonly WaitForSeconds wait = new WaitForSeconds(0.5f);
+    private readonly WaitForSeconds wait = new WaitForSeconds(0.45f);
 
     public event Action AttackAction;
     public event Action PlayerDead;
@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         AttackRateLogic();
+        Debug.DrawRay(new Vector2(Player.transform.position.x, Player.transform.position.y - 1), Vector2.up * 1.5f, Color.red);
+        Debug.DrawRay(new Vector2(Player.transform.position.x - 0.5f, Player.transform.position.y), Vector2.right, Color.red);
+        Debug.DrawRay(new Vector2(Player.transform.position.x, Player.transform.position.y - 0.8f), Vector2.up * 1.4f, Color.red, 1f);
     }
 
     private void AttackAnim()
@@ -94,18 +97,25 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            if (_downJump == true)
+            if (Player.Rigidbody.velocity.y > 0 && IsPassable() == true)
+            {
+                _collider.isTrigger = true;
+            }
+            else if (_downJump == true)
             {
                 _animator.SetBool("Falling", true);
                 yield return wait;
                 _downJump = false;
             }
-            else if (Player.Rigidbody.velocity.y < - 1 && _downJump == false)
+            else if (Player.Rigidbody.velocity.y < -1 && _downJump == false)
             {
                 _animator.SetBool("Falling", true);
-                Player.Collider.isTrigger = false;
+                _collider.isTrigger = false;
             }
-            else _animator.SetBool("Falling", false);
+            else
+            {
+                _animator.SetBool("Falling", false);
+            }
             yield return null;
         }
     }
@@ -151,7 +161,7 @@ public class PlayerController : MonoBehaviour
     private bool OnGround()
     {
         //Todo : 캐릭터 스프라이트 정해지고 나서 레이 갯수를 늘려서 스프라이트 끝에서 끝까지
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 0.9f), Vector2.down, 0.1f, Platform);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 1f), Vector2.down, 0.3f, Platform);
 
         if (hit.collider?.gameObject.layer == 7)
         {
@@ -159,6 +169,25 @@ public class PlayerController : MonoBehaviour
         }
         else return false;
     }
+
+    private bool IsPassable()
+    {
+        RaycastHit2D[] detector = 
+            { 
+                Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 0.8f), Vector2.up, 1.4f, Platform),
+                Physics2D.Raycast(new Vector2(Player.transform.position.x - 0.5f, Player.transform.position.y), Vector2.right, 1f, Platform)
+            };
+        bool passable = false;
+        for (int i = 0; i < detector.Length; i++)
+        {
+            if (detector[i].collider?.gameObject.layer == 7)
+            {
+                passable = true;
+            }
+        }
+        return passable;
+    }
+
 
     private void Move()
     {
@@ -214,25 +243,5 @@ public class PlayerController : MonoBehaviour
     private void Hitted()
     {
         _animator.SetTrigger("Hitted");
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if(collision.gameObject?.layer != 7)
-        {
-            _collider.isTrigger = true;
-        }
-        else if(collision.gameObject?.layer == 7 && !OnGround())
-        {
-            _collider.isTrigger = true;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject?.layer != 7)
-        {
-            _collider.isTrigger = false;
-        }
     }
 }
