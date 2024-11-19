@@ -1,0 +1,84 @@
+{
+    "items": [
+        {
+            "id": 1001,
+            "name": "HP 포션",
+            "description": "체력을 소량 회복시킵니다..",
+            "iconPath": "Sprite/Items/Consumables/Redpotion",
+            "consumableType": 0,
+            "targets": [
+                0
+            ],
+            "duration": 0.0,
+            "values": [
+                30.0
+            ],
+            "equipType": 0,
+            "levelLimit": 0
+        },
+        {
+            "id": 1002,
+            "name": "MP 포션",
+            "description": "마나를 소량 회복시킵니다..",
+            "iconPath": "Sprite/Items/Consumables/Bluepotion",
+            "consumableType": 0,
+            "targets": [
+                1
+            ],
+            "duration": 0.0,
+            "values": [
+                30.0
+            ],
+            "equipType": 0,
+            "levelLimit": 0
+        },
+        {
+            "id": 2001,
+            "name": "그냥 검",
+            "description": "기본적인 검 입니다.",
+            "iconPath": "Sprite/Items/Weapon/Sword",
+            "consumableType": 3,
+            "targets": [
+                2
+            ],
+            "duration": 0.0,
+            "values": [
+                5.0
+            ],
+            "equipType": 0,
+            "levelLimit": 0
+        },
+        {
+            "id": 2002,
+            "name": "그냥 창",
+            "description": "기본적인 창 입니다.",
+            "iconPath": "Sprite/Items/Weapon/Spear",
+            "consumableType": 3,
+            "targets": [
+                2
+            ],
+            "duration": 0.0,
+            "values": [
+                10.0
+            ],
+            "equipType": 0,
+            "levelLimit": 3
+        },
+        {
+            "id": 2003,
+            "name": "그냥 갑옷",
+            "description": "기본적인 갑옷 입니다.",
+            "iconPath": "Sprite/Items/Armour/Armour",
+            "consumableType": 3,
+            "targets": [
+                3
+            ],
+            "duration": 0.0,
+            "values": [
+                5.0
+            ],
+            "equipType": 1,
+            "levelLimit": 0
+        }
+    ]
+}
