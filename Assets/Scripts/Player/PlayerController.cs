@@ -156,8 +156,10 @@ public class PlayerController : MonoBehaviour
     private void CameraMove()
     {
         float Z = -10f;
+        float Y = 0.2f;
         Vector3 TargetPosition = Player.transform.position;
         TargetPosition.z = Z;
+        TargetPosition.y = Y;
         _cam.transform.position = Vector3.Lerp(_cam.transform.position, TargetPosition, Time.deltaTime * 2);
     }
 }
