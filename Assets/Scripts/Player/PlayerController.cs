@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Player Player;
     private Animator _animator;
     private Camera _cam;
+    private Collider2D _collider;
 
     //캐릭터 반전 관련 옵션(Look)
     private Vector2 _mousePos;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _collider = Player.Collider;
         _animator = Player.Animator;
         AttackAction += AttackAnim;
         StartCoroutine(CoPlayerChecker());
@@ -178,6 +180,7 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool("Falling", false);
         }
+        Player.Rigidbody.velocity = new Vector2(Player.Rigidbody.velocity.x, Mathf.Clamp(Player.Rigidbody.velocity.y, -10, 10));
     }
 
     private void Jump()
@@ -213,5 +216,13 @@ public class PlayerController : MonoBehaviour
     private void Hitted()
     {
         _animator.SetTrigger("Hitted");
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer != 7)
+        {
+            _collider.isTrigger = false;
+        }
     }
 }

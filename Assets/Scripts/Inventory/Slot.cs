@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEditorInternal.Profiling.Memory.Experimental;
@@ -8,8 +9,8 @@ using static UnityEditor.Progress;
 public class Slot : MonoBehaviour
 {
     public Item item;
-    public int code;
     public Image itemImage;
+    public int code;
 
     private void Start()
     {
@@ -50,10 +51,5 @@ public class Slot : MonoBehaviour
         {
             itemImage.sprite = null;
         }
-    }
-
-    public int GetCode()
-    {
-        return code;
     }
 }
