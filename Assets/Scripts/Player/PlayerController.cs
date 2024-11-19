@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private readonly WaitForSeconds wait = new WaitForSeconds(0.5f);
 
     public event Action AttackAction;
+    public event Action PlayerDead;
 
     public Player Player;
     private Animator _animator;
@@ -93,21 +94,18 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            if (Player.Rigidbody.velocity.y > 0 && OnGround() == false)
-            {
-                Player.Collider.isTrigger = true;
-            }
-            else if (_downJump == true)
+            if (_downJump == true)
             {
                 _animator.SetBool("Falling", true);
                 yield return wait;
                 _downJump = false;
             }
-            else if (Player.Rigidbody.velocity.y < 0 && _downJump == false)
+            else if (Player.Rigidbody.velocity.y < - 1 && _downJump == false)
             {
                 _animator.SetBool("Falling", true);
                 Player.Collider.isTrigger = false;
             }
+            else _animator.SetBool("Falling", false);
             yield return null;
         }
     }
@@ -220,7 +218,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.layer != 7)
+        if(collision.gameObject?.layer != 7)
+        {
+            _collider.isTrigger = true;
+        }
+        else if(collision.gameObject?.layer == 7 && !OnGround())
+        {
+            _collider.isTrigger = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject?.layer != 7)
         {
             _collider.isTrigger = false;
         }

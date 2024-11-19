@@ -10,4 +10,9 @@ public class PlayerManager : MonoBehaviour, IManager
     {
 
     }
+
+    public void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
 }
