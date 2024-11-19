@@ -16,8 +16,8 @@ public class PlayerCondition : MonoBehaviour
 
     private void Update()
     {
-        Health.fillAmount = Mathf.Min((float)(status.Hp / status.MaxHp), 1f);
-        Mana.fillAmount = Mathf.Min((float)(status.Mp / status.MaxMp), 1f);
-        Exp.fillAmount = Mathf.Min((float)(status.Exp / status.MaxExp), 1f);
+        Health.fillAmount = Mathf.Min((float)status.Hp / (float)status.MaxHp, 1f);
+        Mana.fillAmount = Mathf.Min((float)status.Mp / (float)status.MaxMp, 1f);
+        Exp.fillAmount = Mathf.Min((float)status.Exp / (float)status.MaxExp, 1f);
     }
 }
