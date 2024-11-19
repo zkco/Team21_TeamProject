@@ -8,7 +8,13 @@ public class ConsumableItem : MonoBehaviour
 
     private void Start()
     {
+        
         status = Managers.PlayerManager.Player.Status;
+    }
+
+    public void SetData(int itemId)
+    {
+        data = DataManager.ConsumableDb.Get(itemId);
     }
 
     public void Use()       // 소모품 사용할 때 호출하는 함수

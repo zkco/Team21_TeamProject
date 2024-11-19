@@ -8,7 +8,7 @@ using System;
 public class DataManager : MonoBehaviour, IManager
 {
     public static DataManager Instance;
-
+    
     private DataBase<ConsumableItemData> consumableDb;          // 소모품 아이템 DB
     public static DataBase<ConsumableItemData> ConsumableDb
     {
@@ -27,6 +27,23 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
+    private DataBase<ItemData> itemDb;          // 소모품 아이템 DB
+    public static DataBase<ItemData> ItemDb
+    {
+        get
+        {
+            if (Managers.DataManager.itemDb == null)
+            {
+                List<ItemData> list = new List<ItemData>();
+                // TODO: 소모품 데이터 불러오기
+                string jsonData = Resources.Load<TextAsset>("JSON/ItemDB").text;
+                list = JsonUtility.FromJson<Wrapper<ItemData>>(jsonData).items;
+                Managers.DataManager.itemDb = new DataBase<ItemData>(list);
+
+            }
+            return Managers.DataManager.itemDb;
+        }
+    }
 
     private DataBase<EquipItemData> equipDb;                    // 장비 아이템 DB
     public static DataBase<EquipItemData> EquipDb
