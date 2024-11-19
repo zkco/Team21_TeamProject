@@ -8,7 +8,6 @@ public class ConsumableItem : Item
 
     protected override void Start()
     {
-        
         status = Managers.PlayerManager.Player.Status;
     }
 

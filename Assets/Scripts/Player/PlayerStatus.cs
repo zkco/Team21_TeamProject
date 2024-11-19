@@ -19,6 +19,12 @@ public class PlayerStatus : MonoBehaviour
     public Sprite PlayerSprite;
     public Sprite PlayerWeaponsprite;
 
+    private void Awake()
+    {
+        Hp = MaxHp;
+        Mp = MaxMp;
+    }
+
     public void LevelUp()
     {
         if (Exp >= MaxExp)
@@ -38,9 +44,21 @@ public class PlayerStatus : MonoBehaviour
     {
         switch(target)
         {
-            case "hp": Hp += (int)value; break;
+            case "hp": 
+                Hp += (int)value; 
+                if(Hp > MaxHp)
+                {
+                    Hp = MaxHp;
+                }
+                break;
             case "maxhp": MaxHp += (int)value; break;
-            case "mp": Mp += (int)value; break;
+            case "mp": 
+                Mp += (int)value;
+                if(Mp > MaxMp)
+                {
+                    Mp = MaxMp;
+                }
+                    break;
             case "maxmp": MaxMp += (int)value; break;
             case "exp": Exp += (int)value; break;
             case "maxexp": MaxExp += (int)value; break;
@@ -55,7 +73,7 @@ public class PlayerStatus : MonoBehaviour
     /// time값 만큼 매 초마다 실행(-로 입력하여 뺄셈가능)
     /// </summary>
     /// <param name="target">(max)hp,mp,exp,damage,gold 등 전부 소문자로</param>
-    /// <param name="value">time초 동안 추가할 값</param>
+    /// <param name="value">매 초 마다 추가할 값</param>
     /// <param name="time">지속 시간</param>
     public void AddValueDur(string target, float value, float time)
     {
@@ -72,6 +90,17 @@ public class PlayerStatus : MonoBehaviour
     public void AddValueDur(string target, float value, float delay, float time)
     {
         StartCoroutine(CoAddValueDur(target, value, delay, time));
+    }
+
+    /// <summary>
+    /// target에 value만큼 time동안 값을 추가, time 소모 시 value만큼 값을 제거
+    /// </summary>
+    /// <param name="target">(max)hp,mp,exp,damage,gold 등 전부 소문자로</param>
+    /// <param name="value">지속 시간 동안 추가될 값</param>
+    /// <param name="time">지속 시간</param>
+    public void AddBuff(string target, float value, float time)
+    {
+        StartCoroutine(CoAddBuff(target, value, time));
     }
 
     private IEnumerator CoAddValueDur(string target, float value, float delay, float time)
@@ -93,9 +122,18 @@ public class PlayerStatus : MonoBehaviour
         float durtime = 0;
         while (durtime <= time)
         {
-            AddValueTemp(target, value/time);
+            AddValueTemp(target, value);
             yield return wait;
         }
+        yield return null;
+    }
+
+    private IEnumerator CoAddBuff(string target, float value, float time)
+    {
+        WaitForSeconds wait = new WaitForSeconds(time);
+        AddValueTemp(target, value);
+        yield return wait;
+        AddValueTemp(target, -value);
         yield return null;
     }
 }
