@@ -53,7 +53,7 @@ public class UIShop : MonoBehaviour
     public void SetText(int productId)
     {
         int itemId = DataManager.ProductDb.Get(productId).itemId;
-        ConsumableItemData data = DataManager.ConsumableDb.Get(itemId);
+        ItemData data = DataManager.ItemDb.Get(itemId);
         txtItemName.text = data.name;
         txtItemDescription.text = data.description;
         txtPrice.text = DataManager.ProductDb.Get(productId).price.ToString();
