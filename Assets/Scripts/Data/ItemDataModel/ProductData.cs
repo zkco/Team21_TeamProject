@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class ProductData : DataModel
 {
     public int itemId;

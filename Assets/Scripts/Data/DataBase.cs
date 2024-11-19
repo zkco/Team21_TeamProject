@@ -11,7 +11,7 @@ public class DataBase<T> where T : DataModel
 
     private void GenerateDbFromList(List<T> list)
     {
-        foreach (T data in list)
+        foreach (var data in list)
             db.Add(data.id, data);
     }
 

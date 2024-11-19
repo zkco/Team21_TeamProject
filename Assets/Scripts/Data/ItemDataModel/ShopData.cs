@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+[Serializable]
 public class ShopData : DataModel
 {
     public string shopName;

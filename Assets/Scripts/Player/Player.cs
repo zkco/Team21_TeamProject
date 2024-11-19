@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     //public PlayerCondition Condition;
     //public Weapon weapon; //웨폰에서 작성
     //public Item curItem; //아이템에서 작성
-    //public Inventory Inventory;
+    public Inventory Inventory;
 
     private void Awake()
     {
@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
         Collider = GetComponent<Collider2D>();
         Animator = GetComponentInChildren<Animator>();
+        Status = GetComponent<PlayerStatus>();
+        Inventory = FindObjectOfType<Inventory>().GetComponent<Inventory>();
         //Renderer.sprite = Status.PlayerSprite;
-
     }
 }

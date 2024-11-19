@@ -1,16 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Slot> Slots = new List<Slot>();
+    public Queue<Slot> Slots = new Queue<Slot>();
 
-    private void Awake()
+    private void Start()
     {
         Slot[] slots = GetComponentsInChildren<Slot>();
+        int i = 0;
         foreach (Slot slot in slots)
         {
-            Slots.Add(slot);
+            Slots.Enqueue(slot);
+            slot.code = i;
+            i++;
         }
     }
 
@@ -21,10 +25,20 @@ public class Inventory : MonoBehaviour
     /// <returns></returns>
     public Item GetItem(int code)
     {
-        foreach(var item in Slots)
+        foreach(var slot in Slots)
         {
-            if(item.code == code)
-            return item.GetItem(code);
+            if(slot.code == code)
+            return slot.GetItem(code);
+        }
+        return null;
+    }
+
+    public Slot GetSlot(int code)
+    {
+        foreach (var slot in Slots)
+        {
+            if (slot.code == code)
+                return slot;
         }
         return null;
     }
@@ -39,11 +53,23 @@ public class Inventory : MonoBehaviour
         {
             if(slot.item == null)
             {
-                slot.item = item;
+                slot.SetItem(item);
                 return;
             }
         }
         Debug.Log("ºó Ä­ÀÌ ¾ø½À´Ï´Ù.");
         return;
+    }
+
+    public void RemoveItem(int code)
+    {
+        foreach (var slot in Slots)
+        {
+            if (slot.code == code)
+            {
+                slot.RemoveItem(code);
+                return;
+            }
+        }
     }
 }
