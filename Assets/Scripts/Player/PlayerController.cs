@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private readonly WaitForSeconds wait = new WaitForSeconds(0.45f);
 
     public event Action AttackAction;
-    public event Action PlayerDead;
 
     public Player Player;
     private Animator _animator;
@@ -256,5 +255,13 @@ public class PlayerController : MonoBehaviour
     private void Hitted()
     {
         _animator.SetTrigger("Hitted");
+    }
+
+    private void Dead()
+    {
+        if(Player.Status.Hp <= 0)
+        {
+            _animator.SetTrigger("Dead");
+        }
     }
 }
