@@ -19,12 +19,6 @@ public class PlayerStatus : MonoBehaviour
     public Sprite PlayerSprite;
     public Sprite PlayerWeaponsprite;
 
-    private void Awake()
-    {
-        Hp = MaxHp;
-        Mp = MaxMp;
-    }
-
     public void LevelUp()
     {
         if (Exp >= MaxExp)

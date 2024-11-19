@@ -9,15 +9,15 @@ public class PlayerCondition : MonoBehaviour
     public Image Mana;
     public Image Exp;
 
-    private void Awake()
+    private void Start()
     {
         status = Managers.PlayerManager.Player.Status;
     }
 
     private void Update()
     {
-        Health.fillAmount = Mathf.Min(status.Hp / status.MaxHp , 1);
-        Mana.fillAmount = Mathf.Min(status.Mp / status.MaxMp, 1);
-        Exp.fillAmount = Mathf.Min(status.Exp / status.MaxExp, 1);
+        Health.fillAmount = Mathf.Min((float)(status.Hp / status.MaxHp), 1f);
+        Mana.fillAmount = Mathf.Min((float)(status.Mp / status.MaxMp), 1f);
+        Exp.fillAmount = Mathf.Min((float)(status.Exp / status.MaxExp), 1f);
     }
 }
