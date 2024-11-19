@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour,IManager
         CreateDictionary<SceneType>("Prefabs/UI/Scenes");
         CreateDictionary<UIType>("Prefabs/UI/Popup");
 
-        //SceneManagerEx.OnLoadCompleted(SetBaseUI);
+        SceneManagerEx.OnLoadCompleted(SetBaseUI);
     }
 
 
