@@ -336,6 +336,10 @@ PrefabInstance:
       propertyPath: Exp
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 7034770798152592893, guid: c553cb3e4efe8da4ea0203c6518ae315, type: 3}
+      propertyPath: Speed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
