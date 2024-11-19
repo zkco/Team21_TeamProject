@@ -1,5 +1,7 @@
 using EnumTypes;
+using System;
 
+[Serializable]
 public class EquipItemData : ItemData
 {
     public EquipType equipType;
@@ -9,7 +11,7 @@ public class EquipItemData : ItemData
     //public List<EquipTarget> targets;     // 여러 스탯이 올라가야 할 때
     //public List<float> value;
 
-    public EquipItemData(int id, ItemType type, string name, string description, string iconPath, EquipType equipType, float value, int levelLimit)
+    public EquipItemData(int id, string name, string description, string iconPath, EquipType equipType, float value, int levelLimit)
     {
         this.id = id;
         this.name = name;
