@@ -1,15 +1,20 @@
 using UnityEngine;
 using EnumTypes;
 using Unity.VisualScripting;
-public class EquipItem : MonoBehaviour
+public class EquipItem : Item
 {
     private EquipItemData data;
-
     private Player player;
 
     private void Start()
     {
+        base.ItemData = data;
         player = Managers.PlayerManager.Player;
+    }
+
+    public override void Use()
+    {
+        Equip();
     }
 
     public void Equip()             // 장비 아이템 착용

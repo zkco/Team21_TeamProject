@@ -1,17 +1,18 @@
 using UnityEngine;
 using EnumTypes;
 using System.Collections;
-public class ConsumableItem : MonoBehaviour
+public class ConsumableItem : Item
 {
     private ConsumableItemData data;
     private PlayerStatus status;
 
     private void Start()
     {
+        base.ItemData = data;
         status = Managers.PlayerManager.Player.Status;
     }
 
-    public void Use()       // 소모품 사용할 때 호출하는 함수
+    public override void Use()       // 소모품 사용할 때 호출하는 함수
     {
         if(data.consumableType == ConsumableType.Instant)       // 즉발형일때
         {
@@ -54,5 +55,4 @@ public class ConsumableItem : MonoBehaviour
             }
         }
     }
-
 }

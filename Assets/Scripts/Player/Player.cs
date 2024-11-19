@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
         Collider = GetComponent<Collider2D>();
         Animator = GetComponentInChildren<Animator>();
+        Status = GetComponent<PlayerStatus>();
         //Renderer.sprite = Status.PlayerSprite;
     }
 }

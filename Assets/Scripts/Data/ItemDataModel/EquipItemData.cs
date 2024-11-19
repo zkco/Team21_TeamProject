@@ -1,4 +1,5 @@
 using EnumTypes;
+using Unity.VisualScripting;
 
 public class EquipItemData : ItemData
 {
@@ -19,5 +20,4 @@ public class EquipItemData : ItemData
         this.value = value;
         this.levelLimit = levelLimit;
     }
-
 }

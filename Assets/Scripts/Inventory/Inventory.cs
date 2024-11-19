@@ -8,13 +8,14 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         Slot[] slots = GetComponentsInChildren<Slot>();
+        int i = 0;
         foreach (Slot slot in slots)
         {
             Slots.Add(slot);
+            slot.code = i;
+            i++;
         }
     }
-
-
 
     /// <summary>
     /// code를 통해 슬롯에서 아이템을 받아옴
