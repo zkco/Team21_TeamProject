@@ -4,5 +4,7 @@
 public enum SceneType
 {
     Title,
-    InGame   
+    InGame,
+    
+    TestScene_LHY
 }
