@@ -34,7 +34,7 @@ public class Slot : MonoBehaviour
     {
         this.item = item;
     }
-        
+
     //public void SetItem(int code)
     //{
     //    수정하여 사용 예정
@@ -48,48 +48,33 @@ public class Slot : MonoBehaviour
         {
             itemImage.sprite = Resources.Load<Sprite>(item.ItemData.iconPath);
         }
-        else if(item == null)
+        else if (item == null)
         {
             itemImage.sprite = null;
         }
     }
 
-    public void EquipItem(int code)
+    public void EquipItem()
     {
-        if (this.code == code)
-        {
-            item?.Equip();
-            isEquipped();
-        }
-        else return;
-        
+        item?.Equip();
+        isEquipped();
     }
 
-    public void UnequipItem(int code)
+    public void UnequipItem()
     {
-        if (this.code == code)
-        {
-            item?.Unequip(item);
-            isEquipped();
-        }
-        else return;
+        item?.Unequip(item);
+        isEquipped();
     }
 
-    public void Use(int code)
+    public void Use()
     {
-        if (this.code == code)
-        {
-            item?.Use();
-        }
+        item?.Use();
     }
 
-    public void RemoveItem(int code)
+    public void RemoveItem()
     {
-        if (this.code == code)
-        {
-            item?.Unequip(item);
-            item?.Remove();
-        }
+        item?.Unequip(item);
+        item?.Remove();
     }
 
     private void isEquipped()

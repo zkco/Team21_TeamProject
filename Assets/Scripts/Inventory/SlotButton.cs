@@ -30,23 +30,23 @@ public class SlotButton : MonoBehaviour
     public void EquipItem()
     {
         Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
-        slot.EquipItem(GetInfoCode());
+        slot.EquipItem();
     }
 
     public void UnequipItem()
     {
         Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
-        slot.UnequipItem(GetInfoCode());
+        slot.UnequipItem();
     }
 
     public void RemoveItem()
     {
         Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
-        slot.RemoveItem(_slot.code);
+        slot.RemoveItem();
     }
     public void UseItem()
     {
         Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
-        slot.Use(GetInfoCode());
+        slot.Use();
     }
 }
