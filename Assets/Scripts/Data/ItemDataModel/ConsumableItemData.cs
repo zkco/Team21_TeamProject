@@ -10,7 +10,8 @@ public class ConsumableItemData
     public List<float> values;
 
     public ConsumableItemData()
-        {
+    {
+
     }
 }
 

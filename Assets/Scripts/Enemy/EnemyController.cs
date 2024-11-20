@@ -22,6 +22,17 @@ public class EnemyController : MonoBehaviour
 
     private void Move()
     {
-        Enemy.Rigidbody.velocity = _positionToPlayer.normalized * Enemy.Data.Speed;
+        Enemy.Rigidbody.velocity = _positionToPlayer.normalized * Enemy.Speed;
+    }
+
+    public void GetDamage(int damage)
+    {
+        Enemy.HP -= damage;
+        if(Enemy.HP <= 0) Dead();
+    }
+
+    public void Dead()
+    {
+        this.gameObject.SetActive(false);
     }
 }

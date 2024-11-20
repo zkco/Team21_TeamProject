@@ -32,11 +32,11 @@ namespace EnumTypes
             */
     }
 
-    public enum EnemyType
+    public enum AttackType
     {
-        Normal,
         Touch,
-        Attack,
-        RangeAttack,
+        Military,
+        Ranged,
+        Rush
     }
 }

@@ -37,8 +37,7 @@ public class AttackRange : MonoBehaviour
     {
         foreach (Enemy enemy in _target)
         {
-            enemy.GetDamage(Managers.PlayerManager.Player.Status.Damage);
-            enemy.Dead();
+            enemy.Controller.GetDamage(Managers.PlayerManager.Player.Status.Damage);
         }
     }
 }
