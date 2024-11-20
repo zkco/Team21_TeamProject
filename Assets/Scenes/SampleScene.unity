@@ -1219,6 +1219,8 @@ GameObject:
   m_Component:
   - component: {fileID: 668754897}
   - component: {fileID: 668754898}
+  - component: {fileID: 668754900}
+  - component: {fileID: 668754899}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -1265,6 +1267,40 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &668754899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668754896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a49747d89c1344c9b3131a474a30da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 0}
+--- !u!114 &668754900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668754896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29220b6ce00adbb4f9f2d8cbeb81c823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  MaxHP: 0
+  Damage: 0
+  Speed: 0
+  Gold: 0
+  Controller: {fileID: 0}
+  Rigidbody: {fileID: 0}
+  Animator: {fileID: 0}
+  WhichStage: 0
 --- !u!1001 &866852490
 PrefabInstance:
   m_ObjectHideFlags: 0

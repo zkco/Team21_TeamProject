@@ -6,31 +6,29 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public string Name;
-    public int Lv;
-    public int Hp;
+    [HideInInspector] public string Name;
+    [HideInInspector] public int Lv;
+    [HideInInspector] public int Hp;
     private int maxHp = 100;
-    public int MaxHp { get { return maxHp + AddMaxHp; } }
-    public int Mp;
+    [HideInInspector] public int MaxHp { get { return maxHp + AddMaxHp; } }
+    [HideInInspector] public int Mp;
     private int maxMp = 100;
-    public int MaxMp { get { return maxMp + AddMaxMp; } }
-    public int Exp;
-    public int MaxExp;
+    [HideInInspector] public int MaxMp { get { return maxMp + AddMaxMp; } }
+    [HideInInspector] public int Exp;
+    [HideInInspector] public int MaxExp;
     private float speed = 5;
-    public float Speed { get { return speed + AddSpeed; } }
+    [HideInInspector] public float Speed { get { return speed + AddSpeed; } }
     private int damage = 5;
-    public int Damage { get { return damage + AddDamage; } }
+    [HideInInspector] public int Damage { get { return damage + AddDamage; } }
     private float attackRate = 100;
-    public float AttackRate { get { return (attackRate * 3) / (attackRate + AddAttackRate); } }
+    [HideInInspector] public float AttackRate { get { return (attackRate * 3) / (attackRate + AddAttackRate); } }
     public int Gold;
-    public Sprite PlayerSprite;
-    public Sprite PlayerWeaponsprite;
 
-    public int AddMaxHp = 0;
-    public int AddMaxMp = 0;
-    public int AddDamage = 0;
-    public float AddSpeed = 0;
-    public int AddAttackRate = 0;
+    [HideInInspector] public int AddMaxHp = 0;
+    [HideInInspector] public int AddMaxMp = 0;
+    [HideInInspector] public int AddDamage = 0;
+    [HideInInspector] public float AddSpeed = 0;
+    [HideInInspector] public int AddAttackRate = 0;
 
     public List<Item> EquippedItem;
 
