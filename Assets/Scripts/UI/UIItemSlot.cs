@@ -18,16 +18,9 @@ public class UIItemSlot : MonoBehaviour
     public void SetData(ProductData product)
     {
         data = product;
-        if (product.itemId < 2000) {
-            var item = DataManager.ConsumableDb.Get(product.itemId);
-            imgIcon.sprite = Resources.Load<Sprite>(item.iconPath);
+        var item = DataManager.ItemDb.Get(product.itemId);
+        imgIcon.sprite = Resources.Load<Sprite>(item.iconPath);
 
-        }
-        else 
-        {
-            var item = DataManager.EquipDb.Get(product.itemId);
-            imgIcon.sprite = Resources.Load<Sprite>(item.iconPath);
-        }
     }
     private void Click()
     {

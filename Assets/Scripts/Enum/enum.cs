@@ -9,21 +9,25 @@ namespace EnumTypes
     public enum ConsumableType
     {
         Instant,    // 즉발형
-        Buff        // 버프형
+        Buff,       // 버프형
+        OTHER
     }
 
     public enum EquipType
     {
         Weapon,
         Armor,
-        Accessory
+        Accessory,
+        OTHER
     }
 
-    public enum ConsumableTarget
+    public enum TargetStat
     {
         HP,
         MP,
-        Damage /* ,
+        Damage,
+        MaxHP,
+        MaxMP /* ,
     something else
             */
     }
