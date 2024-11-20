@@ -15,4 +15,9 @@ public class PlayerManager : MonoBehaviour, IManager
     {
         Application.targetFrameRate = 60;
     }
+
+    private void Update()
+    {
+        Player.Status.LevelUp();
+    }
 }

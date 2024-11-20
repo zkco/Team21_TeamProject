@@ -239,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &3174511420902413597
 MonoBehaviour:
@@ -595,7 +596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6497882033887583209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -771,6 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &2475769847471678568
 MonoBehaviour:
@@ -920,6 +922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &6546393430404333256
 MonoBehaviour:
@@ -1657,6 +1660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &451872103807937011
 MonoBehaviour:
@@ -1726,6 +1730,7 @@ GameObject:
   - component: {fileID: 5710085469575418623}
   - component: {fileID: 7204718276902980243}
   - component: {fileID: 9003218260345229381}
+  - component: {fileID: 974299063139332290}
   m_Layer: 5
   m_Name: ThrowButton
   m_TagString: Untagged
@@ -1835,9 +1840,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIShop, Assembly-CSharp
-        m_MethodName: OnBuyButton
+      - m_Target: {fileID: 974299063139332290}
+        m_TargetAssemblyTypeName: SlotButton, Assembly-CSharp
+        m_MethodName: RemoveItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1847,6 +1852,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &974299063139332290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019345088488494159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb62b980d7c03249aa9dcaf7a5288ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slot: {fileID: 0}
+  _itemInfo: {fileID: 0}
 --- !u!1 &2132874003119421987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,6 +1958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &1476591568940784362
 MonoBehaviour:
@@ -2088,6 +2108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &476793696251176116
 MonoBehaviour:
@@ -2237,6 +2258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &6528790383505118179
 MonoBehaviour:
@@ -2814,6 +2836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &4940806477927251031
 MonoBehaviour:
@@ -2963,6 +2986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &3786722964922393854
 MonoBehaviour:
@@ -3216,6 +3240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &6532479249736256252
 MonoBehaviour:
@@ -3365,6 +3390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &2475324309407835203
 MonoBehaviour:
@@ -3514,6 +3540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &1332615852015663865
 MonoBehaviour:
@@ -3713,6 +3740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &86287205716911732
 MonoBehaviour:
@@ -3862,6 +3890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &8829851781344278772
 MonoBehaviour:
@@ -4652,6 +4681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &4035681414041366097
 MonoBehaviour:
@@ -4868,6 +4898,7 @@ GameObject:
   - component: {fileID: 8698771733351321393}
   - component: {fileID: 64194482558195239}
   - component: {fileID: 620608967264893556}
+  - component: {fileID: 7308937631324258711}
   m_Layer: 5
   m_Name: EquipButton
   m_TagString: Untagged
@@ -4977,9 +5008,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIShop, Assembly-CSharp
-        m_MethodName: OnBuyButton
+      - m_Target: {fileID: 7308937631324258711}
+        m_TargetAssemblyTypeName: SlotButton, Assembly-CSharp
+        m_MethodName: EquipItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4989,6 +5020,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7308937631324258711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5703937087767228260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb62b980d7c03249aa9dcaf7a5288ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slot: {fileID: 0}
+  _itemInfo: {fileID: 0}
 --- !u!1 &5912539121483440330
 GameObject:
   m_ObjectHideFlags: 0
@@ -5148,6 +5193,7 @@ GameObject:
   - component: {fileID: 1180058931347015711}
   - component: {fileID: 5381561216222717675}
   - component: {fileID: 5062327067258253506}
+  - component: {fileID: 4979648381928091420}
   m_Layer: 5
   m_Name: UseButton
   m_TagString: Untagged
@@ -5257,9 +5303,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIShop, Assembly-CSharp
-        m_MethodName: OnBuyButton
+      - m_Target: {fileID: 4979648381928091420}
+        m_TargetAssemblyTypeName: SlotButton, Assembly-CSharp
+        m_MethodName: UseItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5269,6 +5315,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4979648381928091420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538531257979503863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb62b980d7c03249aa9dcaf7a5288ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slot: {fileID: 0}
+  _itemInfo: {fileID: 0}
 --- !u!1 &6607904482124334539
 GameObject:
   m_ObjectHideFlags: 0
@@ -5695,6 +5755,7 @@ GameObject:
   - component: {fileID: 2673860709501756372}
   - component: {fileID: 8612638457153246064}
   - component: {fileID: 8622192335537099869}
+  - component: {fileID: 3907591975660179368}
   m_Layer: 5
   m_Name: UnequipButton
   m_TagString: Untagged
@@ -5804,9 +5865,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIShop, Assembly-CSharp
-        m_MethodName: OnBuyButton
+      - m_Target: {fileID: 3907591975660179368}
+        m_TargetAssemblyTypeName: SlotButton, Assembly-CSharp
+        m_MethodName: UnequipItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5816,6 +5877,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3907591975660179368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192399772303062751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb62b980d7c03249aa9dcaf7a5288ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slot: {fileID: 0}
+  _itemInfo: {fileID: 0}
 --- !u!1 &7234254422423620875
 GameObject:
   m_ObjectHideFlags: 0
@@ -6189,6 +6264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &2922745538529595068
 MonoBehaviour:
@@ -6338,6 +6414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &8120688406255292623
 MonoBehaviour:
@@ -6487,6 +6564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &9145777071640454115
 MonoBehaviour:
@@ -7773,6 +7851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &543919725111533333
 MonoBehaviour:
@@ -7922,6 +8001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemImage: {fileID: 0}
+  OutLine: {fileID: 0}
   code: 0
 --- !u!114 &326849903125693541
 MonoBehaviour:

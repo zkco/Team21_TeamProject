@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     public PlayerStatus Status;
     public Animator Animator;
     public PlayerCondition Condition;
-    //public Weapon weapon; //웨폰에서 작성
     //public Item curItem; //아이템에서 작성
     public Inventory Inventory;
 

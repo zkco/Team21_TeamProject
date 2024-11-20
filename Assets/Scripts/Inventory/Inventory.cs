@@ -54,6 +54,7 @@ public class Inventory : MonoBehaviour
             if(slot.item == null)
             {
                 slot.SetItem(item);
+                RegenIcon();
                 return;
             }
         }
@@ -68,8 +69,17 @@ public class Inventory : MonoBehaviour
             if (slot.code == code)
             {
                 slot.RemoveItem(code);
+                RegenIcon();
                 return;
             }
+        }
+    }
+
+    public void RegenIcon()
+    {
+        foreach(var slot in Slots)
+        {
+            slot.Regen();
         }
     }
 }

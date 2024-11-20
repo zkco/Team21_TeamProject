@@ -21,4 +21,32 @@ public class SlotButton : MonoBehaviour
         _itemInfo.CurCode = _slot.code;
         _itemInfo.ChangeUIInfo();
     }
+
+    private int GetInfoCode()
+    {
+        return _itemInfo.CurCode;
+    }
+
+    public void EquipItem()
+    {
+        Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
+        slot.EquipItem(GetInfoCode());
+    }
+
+    public void UnequipItem()
+    {
+        Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
+        slot.UnequipItem(GetInfoCode());
+    }
+
+    public void RemoveItem()
+    {
+        Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
+        slot.RemoveItem(_slot.code);
+    }
+    public void UseItem()
+    {
+        Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
+        slot.Use(GetInfoCode());
+    }
 }

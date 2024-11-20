@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
@@ -7,26 +9,64 @@ public class PlayerStatus : MonoBehaviour
     public string Name;
     public int Lv;
     public int Hp;
-    public int MaxHp;
+    public int MaxHp
+    {
+        get { return MaxHp + AddMaxHp; }
+        private set { MaxHp = value; }
+    }
     public int Mp;
-    public int MaxMp;
+    public int MaxMp
+    {
+        get { return Mp + AddMaxMp; }
+        private set { MaxMp = value; }
+    }
     public int Exp;
     public int MaxExp;
-    public float Speed;
-    public int Damage;
-    public float AttackRate;
+    public float Speed
+    {
+        get { return Speed + AddSpeed; }
+        private set { Speed = 5 + value; }
+    }
+    public int Damage
+    {
+        get { return Damage + AddDamage; }
+        private set { Damage = value; }
+    }
+    public float AttackRate
+    {
+        get { return (AttackRate * 3) / (AttackRate + AddAttackRate); }
+        private set { AttackRate = 100 + value; }
+    }
     public int Gold;
     public Sprite PlayerSprite;
     public Sprite PlayerWeaponsprite;
+
+    public int AddMaxHp = 0;
+    public int AddMaxMp = 0;
+    public int AddDamage = 0;
+    public float AddSpeed = 0;
+    public int AddAttackRate = 0;
+
+    public List<Item> EquippedItem;
 
     public void LevelUp()
     {
         if (Exp >= MaxExp)
         {
-            Lv++;
-            Exp = 0;
-            MaxExp = Mathf.CeilToInt(MaxExp * 1.2f);
+            LevelUpStat();
         }
+    }
+
+    private void LevelUpStat()
+    {
+        Lv++;
+        MaxHp += 10;
+        MaxMp += 10;
+        Damage += 1;
+        Exp = 0;
+        MaxExp = Mathf.CeilToInt(MaxExp * 1.2f);
+        Hp = MaxHp;
+        Mp = MaxMp;
     }
 
     /// <summary>
@@ -36,29 +76,19 @@ public class PlayerStatus : MonoBehaviour
     /// <param name="value">추가할 정수 값</param>
     public void AddValueTemp(string target, float value)
     {
-        switch(target)
+        switch (target)
         {
-            case "hp": 
-                Hp += (int)value; 
-                if(Hp > MaxHp)
-                {
-                    Hp = MaxHp;
-                }
-                break;
-            case "maxhp": MaxHp += (int)value; break;
-            case "mp": 
-                Mp += (int)value;
-                if(Mp > MaxMp)
-                {
-                    Mp = MaxMp;
-                }
-                    break;
-            case "maxmp": MaxMp += (int)value; break;
+            case "hp": Hp += (int)value;
+                if (Hp > MaxHp) { Hp = MaxHp; } break;
+            case "maxhp": AddMaxHp += (int)value; break;
+            case "mp": Mp += (int)value;
+                if (Mp > MaxMp) { Mp = MaxMp; } break;
+            case "maxmp": AddMaxMp += (int)value; break;
             case "exp": Exp += (int)value; break;
             case "maxexp": MaxExp += (int)value; break;
-            case "damage": Damage += (int)value; break;
+            case "damage": AddDamage += (int)value; break;
             case "gold": Gold += (int)value; break;
-            case "speed": Speed += value; break;
+            case "speed": AddSpeed += value; break;
             default: Debug.Log("Target Error"); break;
         }
     }
@@ -129,5 +159,22 @@ public class PlayerStatus : MonoBehaviour
         yield return wait;
         AddValueTemp(target, -value);
         yield return null;
+    }
+
+    public void AddEquippedItemValue()
+    {
+        AddMaxHp = 0;
+        AddMaxMp = 0;
+        AddSpeed = 0;
+        AddDamage = 0;
+        AddAttackRate = 0;
+        for (int i = 0; i < EquippedItem.Count; i++)
+        {
+            if (EquippedItem[i] == null) continue;
+            for (int j = 0; j < EquippedItem[i].ItemData.values.Count; j++)
+            {
+                AddValueTemp(EquippedItem[i].ItemData.targets[j].ToString().ToLower(), EquippedItem[i].ItemData.values[j]);
+            }
+        }
     }
 }
