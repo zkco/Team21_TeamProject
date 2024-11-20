@@ -9,14 +9,19 @@ public class PlayerStatus : MonoBehaviour
     public string Name;
     public int Lv;
     public int Hp;
-    public int MaxHp;
+    private int maxHp;
+    public int MaxHp { get { return maxHp + AddMaxHp; } }
     public int Mp;
-    public int MaxMp;
+    private int maxMp;
+    public int MaxMp { get { return MaxMp + AddMaxMp; } }
     public int Exp;
     public int MaxExp;
-    public float Speed;
-    public int Damage;
-    public float AttackRate;
+    private float speed;
+    public float Speed { get { return speed + AddSpeed; } }
+    private int damage;
+    public int Damage { get { return damage + AddDamage; } }
+    private float attackRate;
+    public float AttackRate { get { return (attackRate * 3) / (attackRate + AddAttackRate); } }
     public int Gold;
     public Sprite PlayerSprite;
     public Sprite PlayerWeaponsprite;
@@ -40,9 +45,9 @@ public class PlayerStatus : MonoBehaviour
     private void LevelUpStat()
     {
         Lv++;
-        MaxHp += 10;
-        MaxMp += 10;
-        Damage += 1;
+        maxHp += 10;
+        maxMp += 10;
+        damage += 1;
         Exp = 0;
         MaxExp = Mathf.CeilToInt(MaxExp * 1.2f);
         Hp = MaxHp;
@@ -58,11 +63,15 @@ public class PlayerStatus : MonoBehaviour
     {
         switch (target)
         {
-            case "hp": Hp += (int)value;
-                if (Hp > MaxHp) { Hp = MaxHp; } break;
+            case "hp":
+                Hp += (int)value;
+                if (Hp > MaxHp) { Hp = MaxHp; }
+                break;
             case "maxhp": AddMaxHp += (int)value; break;
-            case "mp": Mp += (int)value;
-                if (Mp > MaxMp) { Mp = MaxMp; } break;
+            case "mp":
+                Mp += (int)value;
+                if (Mp > MaxMp) { Mp = MaxMp; }
+                break;
             case "maxmp": AddMaxMp += (int)value; break;
             case "exp": Exp += (int)value; break;
             case "maxexp": MaxExp += (int)value; break;

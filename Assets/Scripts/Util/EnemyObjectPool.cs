@@ -13,7 +13,7 @@ public class EnemyObjectPool : MonoBehaviour
 
     private void Start()
     {
-        EnemiesData = Managers.PlayerManager.EnemiesData;
+        EnemiesData = Managers.DataManager.EnemyDatas;
         Enemies = new Queue<GameObject>();
         foreach (EnemyData enemy in EnemiesData)
         {

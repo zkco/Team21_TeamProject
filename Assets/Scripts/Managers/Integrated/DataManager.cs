@@ -99,6 +99,35 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
+    public List<EnemyData> enemyDatas;
+
+    public List<EnemyData> EnemyDatas
+    {
+        get
+        {
+            if(enemyDatas == null)
+            {
+                TextAsset monsterCSV = Resources.Load<TextAsset>("./CSV/MonsterCSV.csv");
+                EnemyData enemyData = new EnemyData();
+
+                var Data = monsterCSV.text.TrimEnd();
+                string[] rowData = Data.Split('\n');
+
+                for (int i = 1; i < rowData.Length; i++)
+                {
+                    string[] data = rowData[i].Split(',');
+                    enemyData.stage = int.Parse(data[0]);
+                    enemyData.XPos = float.Parse(data[1]);
+                    enemyData.YPos = float.Parse(data[2]);
+                    enemyData.path = data[3];
+
+                    enemyDatas.Add(enemyData);
+                }
+            }
+            return enemyDatas;
+        }
+    }
+
     public void Init()
     {
         
