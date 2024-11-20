@@ -13,14 +13,6 @@ public class AttackRange : MonoBehaviour
         Managers.PlayerManager.Player.Controller.AttackAction += Attack;
     }
 
-    private void Update()
-    {
-        if(Managers.PlayerManager.Player.Renderer.flipX == true)
-        {
-            this.gameObject.transform.position *= new Vector2(-1, 1);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy);
