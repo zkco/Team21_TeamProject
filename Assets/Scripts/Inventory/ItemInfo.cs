@@ -54,7 +54,7 @@ public class ItemInfo : MonoBehaviour
                         break;
                 }
             }
-            else if (item.ItemData.type == EnumTypes.ItemType.Equip)
+            else if (item.ItemData.type == EnumTypes.ItemType.Equipable)
             {
                 switch(item.ItemData.equipType)
                 {

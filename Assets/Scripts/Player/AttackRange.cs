@@ -15,10 +15,7 @@ public class AttackRange : MonoBehaviour
 
     private void Update()
     {
-        if(Managers.PlayerManager.Player.Renderer.flipX == true)
-        {
-            this.gameObject.transform.position *= new Vector2(-1, 1);
-        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,6 +28,14 @@ public class AttackRange : MonoBehaviour
     {
         collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy);
         _target.Remove(enemy);
+    }
+
+    private void PlayerFlip(bool flipx)
+    {
+        if(flipx == true)
+        {
+
+        }
     }
 
     private void Attack()
