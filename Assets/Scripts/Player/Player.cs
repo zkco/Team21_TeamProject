@@ -26,8 +26,6 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Status = GetComponent<PlayerStatus>();
         Inventory = FindObjectOfType<Inventory>().GetComponent<Inventory>();
-        Condition = FindObjectOfType<PlayerCondition>().GetComponent<PlayerCondition>();
-        WeaponPivot = GameObject.Find("WeaponPivot");
         //Renderer.sprite = Status.PlayerSprite;
     }
 }

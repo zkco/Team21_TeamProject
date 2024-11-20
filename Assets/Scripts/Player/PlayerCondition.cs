@@ -12,6 +12,7 @@ public class PlayerCondition : MonoBehaviour
     private void Start()
     {
         status = Managers.PlayerManager.Player.Status;
+        Managers.PlayerManager.Player.Condition = this;
     }
 
     private void Update()

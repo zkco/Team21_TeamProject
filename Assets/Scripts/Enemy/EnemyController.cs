@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     private bool _followPlayer;
     private float _distanceToPlayer;
     private Vector2 _positionToPlayer;
+    private Vector2 dir;
 
     private void Awake()
     {
@@ -22,10 +23,14 @@ public class EnemyController : MonoBehaviour
 
     private void Move()
     {
-        Enemy.Rigidbody.velocity = _positionToPlayer.normalized * Enemy.Speed;
+        dir = new Vector2(_positionToPlayer.normalized.x * Enemy.Speed, Enemy.Rigidbody.velocity.y);
+        Enemy.Rigidbody.velocity = dir;
         if (Mathf.Abs(Enemy.Rigidbody.velocity.x) > 0)
         {
             Enemy.Animator.SetBool("Moving", true);
+            if(Enemy.Rigidbody.velocity.x < 0) 
+                Enemy.SR.flipX = true;
+            else Enemy.SR.flipX = false;
         }
         else Enemy.Animator.SetBool("Moving", false);
     }
