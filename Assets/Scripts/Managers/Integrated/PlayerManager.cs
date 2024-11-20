@@ -11,14 +11,15 @@ public class PlayerManager : MonoBehaviour, IManager
 
     public void Init()
     {
-
+        _monsterSpawnPerStage = this.gameObject.AddComponent<MonsterSpawnPerStage>();
+        EnemyPool = this.gameObject.AddComponent<EnemyObjectPool>();
     }
 
     public void Awake()
     {
         Application.targetFrameRate = 60;
-        _monsterSpawnPerStage = this.gameObject.AddComponent<MonsterSpawnPerStage>();
-        EnemyPool = this.gameObject.AddComponent<EnemyObjectPool>();
+        
+        
     }
 
     private void Start()

@@ -10,7 +10,7 @@ public class MonsterSpawnPerStage : MonoBehaviour
     private void Awake()
     {
         TextAsset monsterCSV = Resources.Load<TextAsset>("./CSV/MonsterCSV");
-        var data = monsterCSV.text.TrimEnd();
+        string data = monsterCSV.text.TrimEnd();
 
         GetData(data);
     }

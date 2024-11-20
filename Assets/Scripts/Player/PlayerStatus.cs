@@ -9,34 +9,14 @@ public class PlayerStatus : MonoBehaviour
     public string Name;
     public int Lv;
     public int Hp;
-    public int MaxHp
-    {
-        get { return MaxHp + AddMaxHp; }
-        private set { MaxHp = value; }
-    }
+    public int MaxHp;
     public int Mp;
-    public int MaxMp
-    {
-        get { return Mp + AddMaxMp; }
-        private set { MaxMp = value; }
-    }
+    public int MaxMp;
     public int Exp;
     public int MaxExp;
-    public float Speed
-    {
-        get { return Speed + AddSpeed; }
-        private set { Speed = 5 + value; }
-    }
-    public int Damage
-    {
-        get { return Damage + AddDamage; }
-        private set { Damage = value; }
-    }
-    public float AttackRate
-    {
-        get { return (AttackRate * 3) / (AttackRate + AddAttackRate); }
-        private set { AttackRate = 100 + value; }
-    }
+    public float Speed;
+    public int Damage;
+    public float AttackRate;
     public int Gold;
     public Sprite PlayerSprite;
     public Sprite PlayerWeaponsprite;
