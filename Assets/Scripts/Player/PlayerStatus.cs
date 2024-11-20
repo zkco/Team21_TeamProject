@@ -48,6 +48,7 @@ public class PlayerStatus : MonoBehaviour
         maxHp += 10;
         maxMp += 10;
         damage += 1;
+        attackRate += 1;
         Exp = 0;
         MaxExp = Mathf.CeilToInt(MaxExp * 1.2f);
         Hp = MaxHp;
