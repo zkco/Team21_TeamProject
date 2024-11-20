@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 8601572463000371647}
   - component: {fileID: 7853985856267686019}
   - component: {fileID: 3025683803893872986}
+  - component: {fileID: 3713002151575943376}
   m_Layer: 5
   m_Name: ConditionPopup
   m_TagString: Untagged
@@ -460,6 +461,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3713002151575943376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5299497169865308111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929651730fadb2640bc58de39af83c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5922626337138448734
 GameObject:
   m_ObjectHideFlags: 0
