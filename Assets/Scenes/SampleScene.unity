@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2292918757248390195, guid: 8fa45abd568bef746b50ca1bc88beb01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5728015828970275612, guid: 8fa45abd568bef746b50ca1bc88beb01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -323,22 +327,6 @@ PrefabInstance:
     - target: {fileID: 6148419460168163159, guid: c553cb3e4efe8da4ea0203c6518ae315, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7034770798152592893, guid: c553cb3e4efe8da4ea0203c6518ae315, type: 3}
-      propertyPath: Hp
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7034770798152592893, guid: c553cb3e4efe8da4ea0203c6518ae315, type: 3}
-      propertyPath: Mp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7034770798152592893, guid: c553cb3e4efe8da4ea0203c6518ae315, type: 3}
-      propertyPath: Exp
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7034770798152592893, guid: c553cb3e4efe8da4ea0203c6518ae315, type: 3}
-      propertyPath: Speed
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1103,6 +1091,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4978852622231008260, guid: 07fdf0eadf642a942865c281b9df31ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5299497169865308111, guid: 07fdf0eadf642a942865c281b9df31ed, type: 3}
       propertyPath: m_Name
       value: ConditionPopup

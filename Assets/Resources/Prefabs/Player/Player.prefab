@@ -346,7 +346,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Speed: 5
   JumpPower: 10
   Platform:
     serializedVersion: 2
@@ -386,11 +385,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: aaa
   Lv: 1
-  Hp: 0
+  Hp: 20
   MaxHp: 100
-  Mp: 0
+  Mp: 40
   MaxMp: 100
-  Exp: 20
+  Exp: 80
   MaxExp: 100
   Speed: 5
   Damage: 0

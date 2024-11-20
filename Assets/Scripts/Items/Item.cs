@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using EnumTypes;
 
-public abstract class Item : MonoBehaviour
+public class Item : MonoBehaviour
 {
     public ItemData ItemData;
     private Player player;
