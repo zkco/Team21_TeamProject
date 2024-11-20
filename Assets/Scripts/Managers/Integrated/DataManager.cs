@@ -7,45 +7,8 @@ using System;
 
 public class DataManager : MonoBehaviour, IManager
 {
-    public static DataManager Instance;
-    
-    //private DataBase<ConsumableItemData> consumableDb;          // ¼Ò¸ðÇ° ¾ÆÀÌÅÛ DB
-    //public static DataBase<ConsumableItemData> ConsumableDb
-    //{
-    //    get
-    //    {
-    //        if (Managers.DataManager.consumableDb == null)
-    //        {
-    //            List<ConsumableItemData> list = new List<ConsumableItemData>();
-    //            // TODO: ¼Ò¸ðÇ° µ¥ÀÌÅÍ ºÒ·¯¿À±â
-    //            string jsonData = Resources.Load<TextAsset>("JSON/ConsumableDB").text;
-    //            list = JsonUtility.FromJson<Wrapper<ConsumableItemData>>(jsonData).items;
-    //            Managers.DataManager.consumableDb = new DataBase<ConsumableItemData>(list);
-                
-    //        }
-    //        return Managers.DataManager.consumableDb;
-    //    }
-    //}
-
-
-    //private DataBase<EquipItemData> equipDb;                    // Àåºñ ¾ÆÀÌÅÛ DB
-    //public static DataBase<EquipItemData> EquipDb
-    //{
-    //    get
-    //    {
-    //        if (Managers.DataManager.equipDb == null)
-    //        {
-    //            List<EquipItemData> list = new List<EquipItemData>();
-    //            // TODO: Àåºñ µ¥ÀÌÅÍ ºÒ·¯¿À±â
-    //            string jsonData = Resources.Load<TextAsset>("JSON/EquipDB").text;
-    //            list = JsonUtility.FromJson<Wrapper<EquipItemData>>(jsonData).items;
-
-    //            Managers.DataManager.equipDb = new DataBase<EquipItemData>(list);
-    //        }
-    //        return Managers.DataManager.equipDb;
-    //    }
-    //}
-    private DataBase<ItemData> itemDb;          // ¾ÆÀÌÅÛ DB
+   
+    private DataBase<ItemData> itemDb;          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DB
     public static DataBase<ItemData> ItemDb
     {
         get
@@ -53,7 +16,6 @@ public class DataManager : MonoBehaviour, IManager
             if (Managers.DataManager.itemDb == null)
             {
                 List<ItemData> list = new List<ItemData>();
-                // TODO: ¼Ò¸ðÇ° µ¥ÀÌÅÍ ºÒ·¯¿À±â
                 string jsonData = Resources.Load<TextAsset>("JSON/ItemDB").text;
                 list = JsonUtility.FromJson<Wrapper<ItemData>>(jsonData).items;
                 Managers.DataManager.itemDb = new DataBase<ItemData>(list);
@@ -63,7 +25,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    private DataBase<ProductData> productDb;                    // »óÇ° DB (¾ÆÀÌÅÛ ID¿Í °¡°Ý)
+    private DataBase<ProductData> productDb;                    // ï¿½ï¿½Ç° DB (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
     public static DataBase <ProductData> ProductDb
     {
         get
@@ -71,7 +33,6 @@ public class DataManager : MonoBehaviour, IManager
             if (Managers.DataManager.productDb == null)
             {
                 List<ProductData> list = new List<ProductData>();
-                // TODO: »óÇ° µ¥ÀÌÅÍ ºÒ·¯¿À±â
                 string jsonData = Resources.Load<TextAsset>("JSON/ProductDB").text;
                 list = JsonUtility.FromJson<Wrapper<ProductData>>(jsonData).items;
 
@@ -81,7 +42,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    private DataBase<ShopData> shopDb;                          // »óÁ¡ DB (productÀÇ List¿Í »óÁ¡ÀÌ¸§ ÀúÀå)
+    private DataBase<ShopData> shopDb;                          // ï¿½ï¿½ï¿½ï¿½ DB (productï¿½ï¿½ Listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½)
     public static DataBase<ShopData> ShopDb
     {
         get
@@ -89,7 +50,6 @@ public class DataManager : MonoBehaviour, IManager
             if (Managers.DataManager.shopDb == null)
             {
                 List<ShopData> list = new List<ShopData>();
-                // TODO: »óÁ¡ µ¥ÀÌÅÍ ºÒ·¯¿À±â
                 string jsonData = Resources.Load<TextAsset>("JSON/ShopDB").text;
                 list = JsonUtility.FromJson<Wrapper<ShopData>>(jsonData).items;
 
@@ -98,6 +58,24 @@ public class DataManager : MonoBehaviour, IManager
             return Managers.DataManager.shopDb;
         }
     }
+
+    private DataBase<QuestData> questDb;                          // ï¿½ï¿½ï¿½ï¿½Æ® DB (ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ç¥)
+    public static DataBase<QuestData> QuestDb
+    {
+        get
+        {
+            if (Managers.DataManager.questDb == null)
+            {
+                List<QuestData> list = new List<QuestData>();
+                string jsonData = Resources.Load<TextAsset>("JSON/QuestDB").text;
+                list = JsonUtility.FromJson<Wrapper<QuestData>>(jsonData).items;
+
+                Managers.DataManager.questDb = new DataBase<QuestData>(list);
+            }
+            return Managers.DataManager.questDb;
+        }
+    }
+
 
     public List<EnemyData> enemyDatas = new List<EnemyData>();
 
