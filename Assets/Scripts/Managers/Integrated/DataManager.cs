@@ -99,7 +99,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    public List<EnemyData> enemyDatas;
+    public List<EnemyData> enemyDatas = new List<EnemyData>();
 
     public List<EnemyData> EnemyDatas
     {
@@ -107,7 +107,7 @@ public class DataManager : MonoBehaviour, IManager
         {
             if(enemyDatas == null)
             {
-                TextAsset monsterCSV = Resources.Load<TextAsset>("./CSV/MonsterCSV.csv");
+                TextAsset monsterCSV = Resources.Load<TextAsset>("CSV/MonsterCSV");
                 EnemyData enemyData = new EnemyData();
 
                 var Data = monsterCSV.text.TrimEnd();

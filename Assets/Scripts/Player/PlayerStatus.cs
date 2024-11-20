@@ -9,18 +9,18 @@ public class PlayerStatus : MonoBehaviour
     public string Name;
     public int Lv;
     public int Hp;
-    private int maxHp;
+    private int maxHp = 100;
     public int MaxHp { get { return maxHp + AddMaxHp; } }
     public int Mp;
-    private int maxMp;
-    public int MaxMp { get { return MaxMp + AddMaxMp; } }
+    private int maxMp = 100;
+    public int MaxMp { get { return maxMp + AddMaxMp; } }
     public int Exp;
     public int MaxExp;
-    private float speed;
+    private float speed = 5;
     public float Speed { get { return speed + AddSpeed; } }
-    private int damage;
+    private int damage = 5;
     public int Damage { get { return damage + AddDamage; } }
-    private float attackRate;
+    private float attackRate = 100;
     public float AttackRate { get { return (attackRate * 3) / (attackRate + AddAttackRate); } }
     public int Gold;
     public Sprite PlayerSprite;

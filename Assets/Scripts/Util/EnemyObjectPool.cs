@@ -30,9 +30,8 @@ public class EnemyObjectPool : MonoBehaviour
     /// </summary>
     /// <param name="stage">몬스터의 WhichStage와 일치하는 몬스터가 스폰 됨</param>
     public void SpawnWithStagePosition(int stage) //스테이지 불러올 때 stage에 스테이지 번호를 입력하면
-                                                  //해당 스테이지 몬스터가 스폰 됨
-    {
-        foreach(GameObject obj in Enemies)
+    {                                             //해당 스테이지 몬스터가 스폰 됨
+        foreach (GameObject obj in Enemies)
         {
             Vector2 temp = SpawnPosition.Dequeue();
             SpawnPosition.Enqueue(temp);
