@@ -13,11 +13,6 @@ public class AttackRange : MonoBehaviour
         Managers.PlayerManager.Player.Controller.AttackAction += Attack;
     }
 
-    private void Update()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy);
@@ -28,14 +23,6 @@ public class AttackRange : MonoBehaviour
     {
         collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy);
         _target.Remove(enemy);
-    }
-
-    private void PlayerFlip(bool flipx)
-    {
-        if(flipx == true)
-        {
-
-        }
     }
 
     private void Attack()

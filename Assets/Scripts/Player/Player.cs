@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public PlayerStatus Status;
     public Animator Animator;
     public PlayerCondition Condition;
+    public GameObject WeaponPivot;
     //public Item curItem; //아이템에서 작성
     public Inventory Inventory;
 
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         Status = GetComponent<PlayerStatus>();
         Inventory = FindObjectOfType<Inventory>().GetComponent<Inventory>();
         Condition = FindObjectOfType<PlayerCondition>().GetComponent<PlayerCondition>();
+        WeaponPivot = GameObject.Find("WeaponPivot");
         //Renderer.sprite = Status.PlayerSprite;
     }
 }
