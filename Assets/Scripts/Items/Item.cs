@@ -94,19 +94,19 @@ public abstract class Item : MonoBehaviour
         switch (target)
         {
             case TargetStat.HP:
-                player.Status.AddValueDur("hp", value, ItemData.duration);
+                player.Status.AddBuff("hp", value, ItemData.duration);
                 break;
             case TargetStat.MP:
-                player.Status.AddValueDur("mp", value, ItemData.duration);
+                player.Status.AddBuff("mp", value, ItemData.duration);
                 break;
             case TargetStat.Damage:
-                player.Status.AddValueDur("damage", value, ItemData.duration);
+                player.Status.AddBuff("damage", value, ItemData.duration);
                 break;
             case TargetStat.MaxHP:
-                player.Status.AddValueDur("maxHP", value, ItemData.duration);
+                player.Status.AddBuff("maxHP", value, ItemData.duration);
                 break;
             case TargetStat.MaxMP:
-                player.Status.AddValueDur("maxMP", value, ItemData.duration);
+                player.Status.AddBuff("maxMP", value, ItemData.duration);
                 break;
             default:
                 break;

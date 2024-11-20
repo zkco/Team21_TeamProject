@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private readonly WaitForSeconds wait = new WaitForSeconds(0.45f);
 
     public event Action AttackAction;
-    public event Action PlayerDead;
 
     public Player Player;
     private Animator _animator;
@@ -24,7 +23,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 _mousePos;
 
     //이동 관련 옵션
-    public float Speed;
     public float JumpPower;
     private float _moveDir;
 
@@ -206,7 +204,7 @@ public class PlayerController : MonoBehaviour
         if (_moveDir != 0)
         {
             _animator.SetBool("Running", true);
-            Vector2 dir = new Vector2(_moveDir * Speed, Player.Rigidbody.velocity.y);
+            Vector2 dir = new Vector2(_moveDir * Player.Status.Speed, Player.Rigidbody.velocity.y);
             Player.Rigidbody.velocity = dir;
         }
         else
@@ -256,5 +254,13 @@ public class PlayerController : MonoBehaviour
     private void Hitted()
     {
         _animator.SetTrigger("Hitted");
+    }
+
+    private void Dead()
+    {
+        if(Player.Status.Hp <= 0)
+        {
+            _animator.SetTrigger("Dead");
+        }
     }
 }
