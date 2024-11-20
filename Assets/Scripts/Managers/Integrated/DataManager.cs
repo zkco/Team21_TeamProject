@@ -7,44 +7,7 @@ using System;
 
 public class DataManager : MonoBehaviour, IManager
 {
-    public static DataManager Instance;
-    
-    //private DataBase<ConsumableItemData> consumableDb;          // 소모품 아이템 DB
-    //public static DataBase<ConsumableItemData> ConsumableDb
-    //{
-    //    get
-    //    {
-    //        if (Managers.DataManager.consumableDb == null)
-    //        {
-    //            List<ConsumableItemData> list = new List<ConsumableItemData>();
-    //            // TODO: 소모품 데이터 불러오기
-    //            string jsonData = Resources.Load<TextAsset>("JSON/ConsumableDB").text;
-    //            list = JsonUtility.FromJson<Wrapper<ConsumableItemData>>(jsonData).items;
-    //            Managers.DataManager.consumableDb = new DataBase<ConsumableItemData>(list);
-                
-    //        }
-    //        return Managers.DataManager.consumableDb;
-    //    }
-    //}
-
-
-    //private DataBase<EquipItemData> equipDb;                    // 장비 아이템 DB
-    //public static DataBase<EquipItemData> EquipDb
-    //{
-    //    get
-    //    {
-    //        if (Managers.DataManager.equipDb == null)
-    //        {
-    //            List<EquipItemData> list = new List<EquipItemData>();
-    //            // TODO: 장비 데이터 불러오기
-    //            string jsonData = Resources.Load<TextAsset>("JSON/EquipDB").text;
-    //            list = JsonUtility.FromJson<Wrapper<EquipItemData>>(jsonData).items;
-
-    //            Managers.DataManager.equipDb = new DataBase<EquipItemData>(list);
-    //        }
-    //        return Managers.DataManager.equipDb;
-    //    }
-    //}
+   
     private DataBase<ItemData> itemDb;          // 아이템 DB
     public static DataBase<ItemData> ItemDb
     {
@@ -53,7 +16,6 @@ public class DataManager : MonoBehaviour, IManager
             if (Managers.DataManager.itemDb == null)
             {
                 List<ItemData> list = new List<ItemData>();
-                // TODO: 소모품 데이터 불러오기
                 string jsonData = Resources.Load<TextAsset>("JSON/ItemDB").text;
                 list = JsonUtility.FromJson<Wrapper<ItemData>>(jsonData).items;
                 Managers.DataManager.itemDb = new DataBase<ItemData>(list);
@@ -71,7 +33,6 @@ public class DataManager : MonoBehaviour, IManager
             if (Managers.DataManager.productDb == null)
             {
                 List<ProductData> list = new List<ProductData>();
-                // TODO: 상품 데이터 불러오기
                 string jsonData = Resources.Load<TextAsset>("JSON/ProductDB").text;
                 list = JsonUtility.FromJson<Wrapper<ProductData>>(jsonData).items;
 
@@ -89,7 +50,6 @@ public class DataManager : MonoBehaviour, IManager
             if (Managers.DataManager.shopDb == null)
             {
                 List<ShopData> list = new List<ShopData>();
-                // TODO: 상점 데이터 불러오기
                 string jsonData = Resources.Load<TextAsset>("JSON/ShopDB").text;
                 list = JsonUtility.FromJson<Wrapper<ShopData>>(jsonData).items;
 
@@ -98,6 +58,24 @@ public class DataManager : MonoBehaviour, IManager
             return Managers.DataManager.shopDb;
         }
     }
+
+    private DataBase<QuestData> questDb;                          // 퀘스트 DB (퀘스트 설명, 목표)
+    public static DataBase<QuestData> QuestDb
+    {
+        get
+        {
+            if (Managers.DataManager.questDb == null)
+            {
+                List<QuestData> list = new List<QuestData>();
+                string jsonData = Resources.Load<TextAsset>("JSON/QuestDB").text;
+                list = JsonUtility.FromJson<Wrapper<QuestData>>(jsonData).items;
+
+                Managers.DataManager.questDb = new DataBase<QuestData>(list);
+            }
+            return Managers.DataManager.questDb;
+        }
+    }
+
 
     public void Init()
     {

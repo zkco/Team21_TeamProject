@@ -1,0 +1,22 @@
+{
+    "items": [
+        {
+            "id": 10001,
+            "name": "?? 잡기",
+            "description": "??를 5마리 잡으시오.",
+            "type": 0,
+            "targetId": 7001,
+            "number": 5,
+            "reward": 500
+        },
+        {
+            "id": 10002,
+            "name": "??? 잡기",
+            "description": "???를 5마리 잡으시오.",
+            "type": 0,
+            "targetId": 7002,
+            "number": 5,
+            "reward": 600
+        }
+    ]
+}

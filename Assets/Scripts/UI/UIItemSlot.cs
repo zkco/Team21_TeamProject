@@ -12,6 +12,7 @@ public class UIItemSlot : MonoBehaviour
     private ProductData data;
     private void Start()
     {
+        outline.enabled = false;
         buttonSlot.onClick.AddListener(Click);
     }
 
@@ -22,8 +23,14 @@ public class UIItemSlot : MonoBehaviour
         imgIcon.sprite = Resources.Load<Sprite>(item.iconPath);
 
     }
-    private void Click()
+    public void Click()
     {
         OnClickAction?.Invoke(data.id);
+        ToggleOutline();
+    }
+
+    public void ToggleOutline()
+    {
+        outline.enabled = !outline.enabled;
     }
 }

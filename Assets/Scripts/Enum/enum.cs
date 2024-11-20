@@ -3,7 +3,7 @@ namespace EnumTypes
     public enum ItemType
     {
         Consumable, // 소모품
-        Equip       // 장비
+        Equipable       // 장비
     }
 
     public enum ConsumableType
@@ -30,5 +30,12 @@ namespace EnumTypes
         MaxMP /* ,
     something else
             */
+    }
+
+    public enum QuestType
+    {
+        Kill,
+        Clear,
+
     }
 }
