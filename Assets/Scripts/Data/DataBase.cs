@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class DataBase<T> where T : DataModel
 {
@@ -21,5 +22,15 @@ public class DataBase<T> where T : DataModel
             return db[id];
 
         return null;
+    }
+
+    public bool IsContain(int id)
+    {
+        return db.ContainsKey(id);
+    }
+
+    public Dictionary<int, T>.ValueCollection Values()
+    {
+        return db.Values;
     }
 }
