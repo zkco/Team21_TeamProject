@@ -8,7 +8,7 @@ using System;
 public class DataManager : MonoBehaviour, IManager
 {
    
-    private DataBase<ItemData> itemDb;          // ¾ÆÀÌÅÛ DB
+    private DataBase<ItemData> itemDb;          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DB
     public static DataBase<ItemData> ItemDb
     {
         get
@@ -25,7 +25,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    private DataBase<ProductData> productDb;                    // »óÇ° DB (¾ÆÀÌÅÛ ID¿Í °¡°Ý)
+    private DataBase<ProductData> productDb;                    // ï¿½ï¿½Ç° DB (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
     public static DataBase <ProductData> ProductDb
     {
         get
@@ -42,7 +42,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    private DataBase<ShopData> shopDb;                          // »óÁ¡ DB (productÀÇ List¿Í »óÁ¡ÀÌ¸§ ÀúÀå)
+    private DataBase<ShopData> shopDb;                          // ï¿½ï¿½ï¿½ï¿½ DB (productï¿½ï¿½ Listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½)
     public static DataBase<ShopData> ShopDb
     {
         get
@@ -59,7 +59,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    private DataBase<QuestData> questDb;                          // Äù½ºÆ® DB (Äù½ºÆ® ¼³¸í, ¸ñÇ¥)
+    private DataBase<QuestData> questDb;                          // ï¿½ï¿½ï¿½ï¿½Æ® DB (ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ç¥)
     public static DataBase<QuestData> QuestDb
     {
         get
@@ -76,6 +76,35 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
+
+    public List<EnemyData> enemyDatas = new List<EnemyData>();
+
+    public List<EnemyData> EnemyDatas
+    {
+        get
+        {
+            if(enemyDatas == null)
+            {
+                TextAsset monsterCSV = Resources.Load<TextAsset>("CSV/MonsterCSV");
+                EnemyData enemyData = new EnemyData();
+
+                var Data = monsterCSV.text.TrimEnd();
+                string[] rowData = Data.Split('\n');
+
+                for (int i = 1; i < rowData.Length; i++)
+                {
+                    string[] data = rowData[i].Split(',');
+                    enemyData.stage = int.Parse(data[0]);
+                    enemyData.XPos = float.Parse(data[1]);
+                    enemyData.YPos = float.Parse(data[2]);
+                    enemyData.path = data[3];
+
+                    enemyDatas.Add(enemyData);
+                }
+            }
+            return enemyDatas;
+        }
+    }
 
     public void Init()
     {
