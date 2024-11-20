@@ -12,5 +12,4 @@ public class ShopData : DataModel
         this.shopName = shopName;
         this.productList = productList;
     }
-
 }

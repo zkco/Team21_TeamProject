@@ -31,4 +31,12 @@ namespace EnumTypes
     something else
             */
     }
+
+    public enum AttackType
+    {
+        Touch,
+        Military,
+        Ranged,
+        Rush
+    }
 }
