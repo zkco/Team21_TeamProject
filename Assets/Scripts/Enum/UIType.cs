@@ -7,6 +7,7 @@ public enum UIType
     ConditionPopup,
     InventoryPopup,
     SettingPopup,
+    SettingPopup2,
     ShopPopup,
     StagePopup
 }
