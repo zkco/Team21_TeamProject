@@ -50,6 +50,26 @@ public sealed class SoundManager : MonoBehaviour,IManager
         //요청된 배경 음악이 다를 경우에만 새로운 배경 음악을 설정하고 재생
     }
 
+
+    /// <summary>
+    /// 사운드바 소리 조절 참조 함수
+    /// </summary>
+    public void SetVolume(string name, float volume)
+    {
+        if (name == "BGM")
+        {
+            bgmSource.volume = volume;
+            PlayerPrefs.SetFloat("BGM", volume);
+        }
+        else if (name == "SFX")
+        {
+            sfxSource.volume = volume;
+            PlayerPrefs.SetFloat("SFX", volume);
+        }
+    }
+
+
+
     /// <summary>
     /// Scene 로드 시 자동으로 BGM 호출해주는 함수
     /// </summary>
