@@ -68,7 +68,7 @@ public class Inventory : MonoBehaviour
         {
             if (slot.code == code)
             {
-                slot.RemoveItem(code);
+                slot.RemoveItem();
                 RegenIcon();
                 return;
             }

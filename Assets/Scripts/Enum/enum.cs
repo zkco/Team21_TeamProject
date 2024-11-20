@@ -31,4 +31,12 @@ namespace EnumTypes
     something else
             */
     }
+
+    public enum EnemyType
+    {
+        Normal,
+        Touch,
+        Attack,
+        RangeAttack,
+    }
 }

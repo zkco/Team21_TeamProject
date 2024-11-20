@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class AttackRange : MonoBehaviour
@@ -10,6 +11,14 @@ public class AttackRange : MonoBehaviour
     private void Start()
     {
         Managers.PlayerManager.Player.Controller.AttackAction += Attack;
+    }
+
+    private void Update()
+    {
+        if(Managers.PlayerManager.Player.Renderer.flipX == true)
+        {
+            this.gameObject.transform.position *= new Vector2(-1, 1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +37,8 @@ public class AttackRange : MonoBehaviour
     {
         foreach (Enemy enemy in _target)
         {
-            enemy.HP -= Managers.PlayerManager.Player.Status.Damage;
+            enemy.GetDamage(Managers.PlayerManager.Player.Status.Damage);
+            enemy.Dead();
         }
     }
 }
