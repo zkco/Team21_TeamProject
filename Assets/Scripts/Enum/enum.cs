@@ -2,14 +2,14 @@ namespace EnumTypes
 {
     public enum ItemType
     {
-        Consumable, // ¼Ò¸ðÇ°
-        Equip       // Àåºñ
+        Consumable, // ï¿½Ò¸ï¿½Ç°
+        Equipable       // ï¿½ï¿½ï¿½
     }
 
     public enum ConsumableType
     {
-        Instant,    // Áï¹ßÇü
-        Buff,       // ¹öÇÁÇü
+        Instant,    // ï¿½ï¿½ï¿½ï¿½ï¿½
+        Buff,       // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         OTHER
     }
 
@@ -32,6 +32,11 @@ namespace EnumTypes
             */
     }
 
+    public enum QuestType
+    {
+        Kill,
+        Clear
+    }
     public enum AttackType
     {
         Touch,

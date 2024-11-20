@@ -21,7 +21,9 @@ public class UIShop : MonoBehaviour
 
     private int selectItemIndex;
 
-    public void SetShop(int shopId)
+
+
+    public void SetShop(int shopId)     // 상점 이름 표시,  상점 슬롯 추가
     {
         ShopData shopData = DataManager.ShopDb.Get(shopId);
 
@@ -50,13 +52,13 @@ public class UIShop : MonoBehaviour
         }
     }
 
-    public void SetText(int productId)
+    public void SetText(int productId)      // 상점 슬롯 누를 시 그 아이템 정보 텍스트 표시
     {
         int itemId = DataManager.ProductDb.Get(productId).itemId;
         ItemData data = DataManager.ItemDb.Get(itemId);
         txtItemName.text = data.name;
         txtItemDescription.text = data.description;
-        txtPrice.text = DataManager.ProductDb.Get(productId).price.ToString();
+        txtPrice.text = DataManager.ProductDb.Get(productId).price.ToString() + " G";
         txtStatName.text = string.Empty;
         for (int i = 0; i < data.targets.Count; i++)
         {
@@ -66,13 +68,19 @@ public class UIShop : MonoBehaviour
         
     }
 
-    public void BuyItem(int productId)
+    public void BuyItem(int productId)      // 구매 버튼 누를 시 동작
     {
         int price = DataManager.ProductDb.Get(productId).price;
         if (Managers.PlayerManager.Player.Status.Gold < price)
             return;
 
         Managers.PlayerManager.Player.Status.Gold -= price;
-        //
+
+
+        ProductData data = DataManager.ProductDb.Get(productId);        // 플레이어 소지 아이템에 ItemData 포함한 Item instance 추가
+        Item itemInstance = new Item();
+        itemInstance.SetData(data);
+        Managers.PlayerManager.Player.Inventory.SetItem(itemInstance);
+        
     }
 }

@@ -2,8 +2,8 @@ namespace Constants
 {
     public class ShopCode
     {
-        public const int EquipShopId = 3001;
-        public const int ConsumableShopId = 3002;
+        public const int ConsumableShopId = 4001;
+        public const int EquipShopId = 4002;
     }
 
     public class PathInfo
