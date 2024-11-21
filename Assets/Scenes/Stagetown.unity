@@ -361,14 +361,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Town
       objectReference: {fileID: 0}
-    - target: {fileID: 2489395748082444756, guid: 67d6082e5bd06504e9d589bd9c09d20b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598120054547798742, guid: 67d6082e5bd06504e9d589bd9c09d20b, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7256179546201272005, guid: 67d6082e5bd06504e9d589bd9c09d20b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
