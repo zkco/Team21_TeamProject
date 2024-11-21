@@ -162,6 +162,8 @@ MonoBehaviour:
   Controller: {fileID: 0}
   Rigidbody: {fileID: 0}
   Animator: {fileID: 0}
+  SR: {fileID: 0}
+  Collider: {fileID: 0}
   WhichStage: 1
 --- !u!114 &4539795854829656657
 MonoBehaviour:
@@ -202,7 +204,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &8806248890495804080
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

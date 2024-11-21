@@ -77,7 +77,7 @@ public class DataManager : MonoBehaviour, IManager
     }
 
 
-    public List<EnemyData> enemyDatas = new List<EnemyData>();
+    public List<EnemyData> enemyDatas;
 
     public List<EnemyData> EnemyDatas
     {
@@ -85,20 +85,20 @@ public class DataManager : MonoBehaviour, IManager
         {
             if(enemyDatas == null)
             {
+                enemyDatas = new List<EnemyData>();
                 TextAsset monsterCSV = Resources.Load<TextAsset>("CSV/MonsterCSV");
-                EnemyData enemyData = new EnemyData();
 
                 var Data = monsterCSV.text.TrimEnd();
-                string[] rowData = Data.Split('\n');
+                string[] rowData = Data.Split("\r\n");
 
                 for (int i = 1; i < rowData.Length; i++)
                 {
+                    EnemyData enemyData = new EnemyData();
                     string[] data = rowData[i].Split(',');
                     enemyData.stage = int.Parse(data[0]);
                     enemyData.XPos = float.Parse(data[1]);
                     enemyData.YPos = float.Parse(data[2]);
                     enemyData.path = data[3];
-
                     enemyDatas.Add(enemyData);
                 }
             }
