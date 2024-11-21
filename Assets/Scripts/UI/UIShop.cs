@@ -27,6 +27,8 @@ public class UIShop : BasePopup
     {
         uiItemSlot = Resources.Load<GameObject>(slotPath).GetComponent<UIShopSlot>();
         SetShop(ShopCode.EquipShopId);
+        buyButton.onClick.AddListener(BuyItem);
+        InitializeText();
     }
 
     public void SetShop(int shopId)     // 상점 이름 표시,  상점 슬롯 추가
@@ -36,6 +38,8 @@ public class UIShop : BasePopup
         txtTitle.text = shopData.name;
 
         var productList = shopData.productList;
+
+        int index = 0;
         foreach (var productId in productList)
         {
             var product = DataManager.ProductDb.Get(productId);
@@ -49,14 +53,25 @@ public class UIShop : BasePopup
 
             slot.SetData(product);
             //slot.SetClickListener((id) => { ShopManager.Instance.BuyItem(id); });
-
+            slot.index = index;
             slot.gameObject.SetActive(true);
             slot.transform.SetAsLastSibling();
 
             slot.OnClickAction += SetText;
+            slot.OnClickAction += (int a) => selectItemIndex = slot.index;
             slotList.Add(slot);
+            index++;
         }
         
+    }
+
+    private void InitializeText()
+    {
+        txtItemName.text = string.Empty;
+        txtItemDescription.text = string.Empty;
+        txtStatName.text = string.Empty;
+        txtStatValue.text = string.Empty;
+        txtPrice.text = string.Empty;
     }
 
     public void SetText(int productId)      // 상점 슬롯 누를 시 그 아이템 정보 텍스트 표시
@@ -76,8 +91,10 @@ public class UIShop : BasePopup
         
     }
 
-    public void BuyItem(int productId)      // 구매 버튼 누를 시 동작
+    public void BuyItem()      // 구매 버튼 누를 시 동작
     {
+        Debug.Log(selectItemIndex.ToString());
+        int productId = slotList[selectItemIndex].GetData().id;
         int price = DataManager.ProductDb.Get(productId).price;
         if (Managers.PlayerManager.Player.Status.Gold < price)
             return;
