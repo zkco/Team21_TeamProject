@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 2280489814118515218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -0.1, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8063743715831562480}
@@ -62,7 +62,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f516f194847074da5b8b739e3d15cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target: []
 --- !u!1 &3471905067999131355
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 914184838, guid: 112fe578ec9074b4daa28cd0e5749701, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -221,8 +222,8 @@ Transform:
   m_GameObject: {fileID: 3781466541704679410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.2, y: -0.1, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6242293159034416067}
@@ -418,6 +419,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 69745eae-5bcb-417c-bdd0-e520f9474603
     m_ActionName: Player/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5087299111262203698}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnCallInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 359a5d7b-871e-4dc3-ae09-cd02f5594f70
+    m_ActionName: Player/Inventory[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5087299111262203698}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnTestQuest
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 15aed4c9-0350-4a5c-a889-b4b7ea60a512
+    m_ActionName: Player/QuestTest[/Keyboard/6]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -459,6 +492,7 @@ MonoBehaviour:
   Status: {fileID: 0}
   Animator: {fileID: 0}
   Condition: {fileID: 0}
+  WeaponPivot: {fileID: 3781466541704679410}
   Inventory: {fileID: 0}
 --- !u!114 &7034770798152592893
 MonoBehaviour:
@@ -479,8 +513,6 @@ MonoBehaviour:
   Exp: 80
   MaxExp: 100
   Gold: 0
-  PlayerSprite: {fileID: 0}
-  PlayerWeaponsprite: {fileID: 0}
   AddMaxHp: 0
   AddMaxMp: 0
   AddDamage: 0

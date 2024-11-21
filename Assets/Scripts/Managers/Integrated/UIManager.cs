@@ -12,9 +12,9 @@ public class UIManager : MonoBehaviour,IManager
     public void Init()
     {
         CreateDictionary<SceneType>("Prefabs/UI/Scenes");
-        CreateDictionary<UIType>("Prefabs/UI/Popup");
+        CreateDictionary<UIType>("Prefabs/UI/UI/Slice");
 
-        //SceneManagerEx.OnLoadCompleted(SetBaseUI);
+        SceneManagerEx.OnLoadCompleted(SetBaseUI);
     }
 
 

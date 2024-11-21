@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemyObjectPool : MonoBehaviour
 {
@@ -14,14 +15,17 @@ public class EnemyObjectPool : MonoBehaviour
     private void Start()
     {
         EnemiesData = Managers.DataManager.EnemyDatas;
+        SpawnPosition = new Queue<Vector2>();
         Enemies = new Queue<GameObject>();
-        foreach (EnemyData enemy in EnemiesData)
+        for(int i = 0; i < EnemiesData.Count; i++)
         {
-            GameObject obj = Instantiate(Resources.Load<GameObject>(enemy.path), new Vector2(enemy.XPos, enemy.YPos), Quaternion.identity);
-            SpawnPosition.Enqueue(obj.transform.position);
-            obj.GetComponent<Enemy>().WhichStage = enemy.stage;
-            obj.SetActive(false);
+            GameObject obj = Instantiate(Resources.Load<GameObject>(EnemiesData[i].path));
+            Vector2 pos = new Vector2(EnemiesData[i].XPos, EnemiesData[i].YPos);
+            obj.GetComponent<Enemy>().WhichStage = EnemiesData[i].stage;
             Enemies.Enqueue(obj);
+            DontDestroyOnLoad(obj);
+            SpawnPosition.Enqueue(pos);
+            obj.SetActive(false);
         }
     }
 
@@ -31,21 +35,25 @@ public class EnemyObjectPool : MonoBehaviour
     /// <param name="stage">몬스터의 WhichStage와 일치하는 몬스터가 스폰 됨</param>
     public void SpawnWithStagePosition(int stage) //스테이지 불러올 때 stage에 스테이지 번호를 입력하면
     {                                             //해당 스테이지 몬스터가 스폰 됨
+        for(int i = 0; i < Enemies.Count; i++)
+        {
+            GameObject obj = Enemies.Dequeue();
+            obj.transform.position = SpawnPosition.Dequeue();
+            if (stage == EnemiesData[i].stage)
+            {
+                obj.SetActive(true);
+            }
+            Enemies.Enqueue(obj);
+            SpawnPosition.Enqueue(obj.transform.position);
+        }
+    }
+
+    public void DeSpawnAllEnemy()
+    {
         foreach (GameObject obj in Enemies)
         {
-            Vector2 temp = SpawnPosition.Dequeue();
-            SpawnPosition.Enqueue(temp);
-            GameObject tempObj = Enemies.Dequeue();
-            Enemies.Enqueue(tempObj);
-            if (tempObj.GetComponent<Enemy>().WhichStage == stage)
-            {
-                Enemy enemy = tempObj.GetComponent<Enemy>();
-                enemy.HP = enemy.MaxHP;
-                tempObj.transform.position = temp;
-                tempObj.SetActive(true);
-            }
+            obj.SetActive(false);
         }
-        
     }
 }
 

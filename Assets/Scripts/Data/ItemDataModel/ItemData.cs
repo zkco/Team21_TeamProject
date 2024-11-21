@@ -1,6 +1,7 @@
 using EnumTypes;
 using System;
 using System.Collections.Generic;
+
 [Serializable]
 public class ItemData : DataModel
 {

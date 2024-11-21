@@ -50,6 +50,20 @@ public sealed class SoundManager : MonoBehaviour,IManager
         //요청된 배경 음악이 다를 경우에만 새로운 배경 음악을 설정하고 재생
     }
 
+    public void SetVolume(string name, float volume)
+    {
+        if (name == "BGM")
+        {
+            bgmSource.volume = volume;
+            PlayerPrefs.SetFloat("BGM", volume);
+        }
+        else if (name == "SFX")
+        {
+            sfxSource.volume = volume;
+            PlayerPrefs.SetFloat("SFX", volume);
+        }
+    }
+
     /// <summary>
     /// Scene 로드 시 자동으로 BGM 호출해주는 함수
     /// </summary>
@@ -69,11 +83,41 @@ public sealed class SoundManager : MonoBehaviour,IManager
                 break;
 
 
-            case "InGame":
+            case "Town":
                 //위와 동일
-                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.InGame])
+                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.Town])
                 {
-                    bgmSource.clip = soundDictionary[BGMType.InGame];
+                    bgmSource.clip = soundDictionary[BGMType.Town];
+                    bgmSource.Play();
+                }
+                break;
+
+
+            case "Stage1":
+                //위와 동일
+                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.stageTo2])
+                {
+                    bgmSource.clip = soundDictionary[BGMType.stageTo2];
+                    bgmSource.Play();
+                }
+                break;
+
+
+            case "Stage2":
+                //위와 동일
+                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.stageTo2])
+                {
+                    bgmSource.clip = soundDictionary[BGMType.stageTo2];
+                    bgmSource.Play();
+                }
+                break;
+
+                
+            case "Stage3":
+                //위와 동일
+                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.stage3])
+                {
+                    bgmSource.clip = soundDictionary[BGMType.stage3];
                     bgmSource.Play();
                 }
                 break;
