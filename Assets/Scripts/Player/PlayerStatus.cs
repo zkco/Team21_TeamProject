@@ -21,7 +21,7 @@ public class PlayerStatus : MonoBehaviour
     private int damage = 5;
     [HideInInspector] public int Damage { get { return damage + AddDamage; } }
     private float attackRate = 100;
-    [HideInInspector] public float AttackRate { get { return (attackRate * 1.5f) / (attackRate + AddAttackRate); } }
+    [HideInInspector] public float AttackRate { get { return (attackRate) / (attackRate + AddAttackRate); } }
     public int Gold;
 
     public int AddMaxHp = 0;

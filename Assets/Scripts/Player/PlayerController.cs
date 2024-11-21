@@ -45,6 +45,7 @@ public class PlayerController : BasePopup
 
     private void Start()
     {
+        JumpPower = 7;
         _collider = Player.Collider;
         _animator = Player.Animator;
         AttackAction += AttackAnim;
