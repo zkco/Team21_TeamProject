@@ -774,7 +774,6 @@ GameObject:
   - component: {fileID: 4159033633000029981}
   - component: {fileID: 2743160376865908194}
   - component: {fileID: 3957607978563442731}
-  - component: {fileID: 5905012575683155343}
   m_Layer: 5
   m_Name: StagePopup
   m_TagString: Untagged
@@ -846,20 +845,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5905012575683155343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6930827779874466350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 876f321c39120d94691c50e4315cf6ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursor: {fileID: 1855137422512412797}
-  stages: []
 --- !u!1 &8144789101979427144
 GameObject:
   m_ObjectHideFlags: 0
