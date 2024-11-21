@@ -23,6 +23,7 @@ public class EnemyObjectPool : MonoBehaviour
             Vector2 pos = new Vector2(EnemiesData[i].XPos, EnemiesData[i].YPos);
             obj.GetComponent<Enemy>().WhichStage = EnemiesData[i].stage;
             Enemies.Enqueue(obj);
+            DontDestroyOnLoad(obj);
             SpawnPosition.Enqueue(pos);
             obj.SetActive(false);
         }
