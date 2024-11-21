@@ -32,12 +32,18 @@ public class PlayerStatus : MonoBehaviour
 
     public List<Item> EquippedItem;
 
+    private void Update()
+    {
+        LevelUp();
+    }
+
     public void LevelUp()
     {
         if (Exp >= MaxExp)
         {
             LevelUpStat();
         }
+        return;
     }
 
     private void LevelUpStat()

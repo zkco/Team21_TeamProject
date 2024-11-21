@@ -114,7 +114,6 @@ public class PlayerController : MonoBehaviour
             && _canMove == true)
         {
             Jump();
-            Managers.PlayerManager.EnemyPool.SpawnWithStagePosition(1);
         }
     }
 
