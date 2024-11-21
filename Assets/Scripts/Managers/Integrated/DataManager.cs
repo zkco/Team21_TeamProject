@@ -8,7 +8,7 @@ using System;
 public class DataManager : MonoBehaviour, IManager
 {
    
-    private DataBase<ItemData> itemDb;          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DB
+    private DataBase<ItemData> itemDb;          // ¾ÆÀÌÅÛ DB
     public static DataBase<ItemData> ItemDb
     {
         get
@@ -25,7 +25,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    private DataBase<ProductData> productDb;                    // ï¿½ï¿½Ç° DB (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    private DataBase<ProductData> productDb;                    // »óÇ° DB (¾ÆÀÌÅÛ Id¿Í °¡°Ý)
     public static DataBase <ProductData> ProductDb
     {
         get
@@ -42,7 +42,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    private DataBase<ShopData> shopDb;                          // ï¿½ï¿½ï¿½ï¿½ DB (productï¿½ï¿½ Listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    private DataBase<ShopData> shopDb;                          // »óÁ¡ DB (productÀÇ List¿Í »óÁ¡ ÀÌ¸§)
     public static DataBase<ShopData> ShopDb
     {
         get
@@ -59,7 +59,7 @@ public class DataManager : MonoBehaviour, IManager
         }
     }
 
-    private DataBase<QuestData> questDb;                          // ï¿½ï¿½ï¿½ï¿½Æ® DB (ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ç¥)
+    private DataBase<QuestData> questDb;                          // Äù½ºÆ® DB (Äù½ºÆ® Á¤º¸, ¸ñÇ¥, º¸»ó)
     public static DataBase<QuestData> QuestDb
     {
         get
