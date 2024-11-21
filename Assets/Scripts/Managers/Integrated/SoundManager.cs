@@ -83,11 +83,41 @@ public sealed class SoundManager : MonoBehaviour,IManager
                 break;
 
 
-            case "InGame":
+            case "Town":
                 //困客 悼老
-                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.InGame])
+                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.Town])
                 {
-                    bgmSource.clip = soundDictionary[BGMType.InGame];
+                    bgmSource.clip = soundDictionary[BGMType.Town];
+                    bgmSource.Play();
+                }
+                break;
+
+
+            case "Stage1":
+                //困客 悼老
+                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.stageTo2])
+                {
+                    bgmSource.clip = soundDictionary[BGMType.stageTo2];
+                    bgmSource.Play();
+                }
+                break;
+
+
+            case "Stage2":
+                //困客 悼老
+                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.stageTo2])
+                {
+                    bgmSource.clip = soundDictionary[BGMType.stageTo2];
+                    bgmSource.Play();
+                }
+                break;
+
+                
+            case "Stage3":
+                //困客 悼老
+                if (bgmSource.clip == null || bgmSource.clip != soundDictionary[BGMType.stage3])
+                {
+                    bgmSource.clip = soundDictionary[BGMType.stage3];
                     bgmSource.Play();
                 }
                 break;

@@ -4,5 +4,8 @@
 public enum SceneType
 {
     Title,
-    InGame   
+    Town,
+    Stage1,
+    Stage2,
+    Stage3
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BasePopup
 {
     private readonly WaitForSeconds wait = new WaitForSeconds(0.45f);
 
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_canMove == true)
+        if (_canMove == true)
         {
             Move();
             Look();
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started 
+        if (context.phase == InputActionPhase.Started
             && _canMove == true)
         {
             Jump();
@@ -119,8 +119,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started 
-            && _lastAttackTime >= Player.Status.AttackRate 
+        if (context.phase == InputActionPhase.Started
+            && _lastAttackTime >= Player.Status.AttackRate
             && _canMove == true)
         {
             _lastAttackTime = 0f;
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDown(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started 
+        if (context.phase == InputActionPhase.Started
             && _canMove == true)
         {
             DownJump();
@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
     }
     private void DownJump()
     {
-        if (OnGround() == true 
+        if (OnGround() == true
             && OnPlatform() == true)
         {
             Player.Collider.isTrigger = true;
@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
     //피격 구현 시 구독
     public void GetDamage(int damage)
     {
-        if(_lastDamagedTime > 1 && _canMove == true)
+        if (_lastDamagedTime > 1 && _canMove == true)
         {
             _lastDamagedTime = 0;
             _animator.SetTrigger("Hitted");
@@ -269,6 +269,17 @@ public class PlayerController : MonoBehaviour
             PlayerDead?.Invoke();
             Managers.PlayerManager.EnemyPool.DeSpawnAllEnemy();
             _canMove = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 충돌한 객체의 태그를 확인
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            // 충돌 시 효과음 및 UI 표시
+            Managers.SoundManager.PlaySFX(SFXType.selectStage);
+            Managers.UIManager.CreateUI(UIType.StagePopup);
         }
     }
 }

@@ -64,23 +64,19 @@ public class StagePopup : BasePopup
         Managers.SoundManager.PlaySFX(SFXType.enterStage);
         if (currentIndex == 0)
         {
-            //여기에 home 불러올 코드
-            //Managers.UIManager.CreateUI(UIType.(여기에 home 프리팹 추가))
+            SceneManagerEx.LoadScene(SceneType.Town);
         }
         else if (currentIndex == 1)
         {
-            //여기에 stage1 불러올 코드
-            //Managers.UIManager.CreateUI(UIType.(여기에 stage1 프리팹 추가))
+            SceneManagerEx.LoadScene(SceneType.Stage1);
         }
         else if (currentIndex == 2)
         {
-            //여기에 stage2 불러올 코드
-            //Managers.UIManager.CreateUI(UIType.(여기에 stage2 프리팹 추가))
+            SceneManagerEx.LoadScene(SceneType.Stage2);
         }
         else if (currentIndex == 3)
         {
-            //여기에 stage3 불러올 코드
-            //Managers.UIManager.CreateUI(UIType.(여기에 stage3 프리팹 추가))
+            SceneManagerEx.LoadScene(SceneType.Stage3);
         }
     }
 }

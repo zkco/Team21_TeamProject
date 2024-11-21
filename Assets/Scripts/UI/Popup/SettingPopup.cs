@@ -12,20 +12,22 @@ public class SettingPopup : BasePopup
 
     public void OnClickContinueButton()
     {
+        Managers.SoundManager.PlaySFX(SFXType.Button);
         Close();
-        Time.timeScale = 1f;
+        Destroy(gameObject);
+        
     }
 
     public void OnClickLoadButton()
     {
-        Close();
+
         //여기에 저장된 JSON 파일 불러올 코드 추가.
         Time.timeScale = 1f;
     }
 
     public void OnClickSettingButton()
     {
-        Close();
+        Managers.SoundManager.PlaySFX(SFXType.Button);
         Managers.UIManager.CreateUI(UIType.SettingPopup2, false);
     }
 
