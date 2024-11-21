@@ -14,7 +14,7 @@ public class SettingPopup : BasePopup
     {
         Managers.SoundManager.PlaySFX(SFXType.Button);
         Close();
-        Destroy(gameObject);
+        Time.timeScale = 1f;
         
     }
 
