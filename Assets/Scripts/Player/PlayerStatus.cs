@@ -24,11 +24,11 @@ public class PlayerStatus : MonoBehaviour
     [HideInInspector] public float AttackRate { get { return (attackRate * 1.5f) / (attackRate + AddAttackRate); } }
     public int Gold;
 
-    [HideInInspector] public int AddMaxHp = 0;
-    [HideInInspector] public int AddMaxMp = 0;
-    [HideInInspector] public int AddDamage = 0;
-    [HideInInspector] public float AddSpeed = 0;
-    [HideInInspector] public int AddAttackRate = 0;
+    public int AddMaxHp = 0;
+    public int AddMaxMp = 0;
+    public int AddDamage = 0;
+    public float AddSpeed = 0;
+    public int AddAttackRate = 0;
 
     public List<Item> EquippedItem;
 

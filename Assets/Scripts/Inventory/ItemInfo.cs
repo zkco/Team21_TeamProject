@@ -32,7 +32,7 @@ public class ItemInfo : MonoBehaviour
     {
         UseButton.SetActive(false);
         EquipButton.SetActive(false);
-        UseButton.SetActive(false);
+        UnEquipButton.SetActive(false);
         RemoveButton.SetActive(false);
         sN.Clear();
         sV.Clear();

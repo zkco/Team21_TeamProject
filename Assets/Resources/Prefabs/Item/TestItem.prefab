@@ -46,15 +46,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemData:
     id: 1
-    type: 0
+    type: 1
     name: 111
     description: 111111
     iconPath: Prefabs/Sprites/Test
-    consumableType: 0
-    targets: 00000000
+    consumableType: 2
+    targets: 030000000400000002000000
     duration: 0
     values:
-    - 0
+    - 100
+    - 100
+    - 100
     equipType: 0
     levelLimit: 0
   isEquipped: 0
