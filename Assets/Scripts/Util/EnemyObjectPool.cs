@@ -70,6 +70,7 @@ public class EnemyObjectPool : MonoBehaviour
             case "Stage3": stage = 3; break;
             default: stage = 0;  break;
         }
+        Debug.Log(SceneManager.GetActiveScene());
         DeSpawnAllEnemy();
         SpawnWithStagePosition(stage);
     }
