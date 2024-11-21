@@ -32,6 +32,12 @@ public class PlayerStatus : MonoBehaviour
 
     public List<Item> EquippedItem;
 
+    private void Start()
+    {
+        Hp = maxHp;
+        Mp = maxMp;
+    }
+
     private void Update()
     {
         LevelUp();
