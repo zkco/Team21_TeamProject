@@ -18,8 +18,6 @@ public class Slot : MonoBehaviour
 
     private void Start()
     {
-        itemImage = GetComponentInChildren<Image>();
-        OutLine = GetComponent<Image>();
         _baseColor = new Color(171 / 255f, 73 / 255f, 20 / 255f, 1f);
         _equipColor = new Color(20 / 255f, 171 / 255f, 169 / 255f, 1f);
     }
@@ -69,12 +67,14 @@ public class Slot : MonoBehaviour
     public void Use()
     {
         item?.Use();
+        itemImage.sprite = null;
         this.item = null;
     }
 
     public void RemoveItem()
     {
         item?.Unequip(item);
+        itemImage.sprite = null;
         this.item = null;
     }
 

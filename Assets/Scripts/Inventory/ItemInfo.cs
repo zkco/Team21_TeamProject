@@ -41,7 +41,7 @@ public class ItemInfo : MonoBehaviour
             RemoveButton.SetActive(true);
             Slot slot = Inventory.GetSlot(CurCode);
             Item item = slot.GetItem(CurCode);
-            Icon = slot.itemImage;
+            Icon.sprite = slot.itemImage.sprite;
             ItemName.text = item.ItemData.name;
             ItemDescription.text = item.ItemData.description;
             //ItemPrice.text = item.ItemData.price;
@@ -111,7 +111,7 @@ public class ItemInfo : MonoBehaviour
         }
         else
         {
-            Icon = null;
+            Icon.sprite = null;
             ItemName.text = null;
             ItemDescription.text = null;
             StatName.text = null;

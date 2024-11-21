@@ -49,7 +49,7 @@ MonoBehaviour:
     type: 0
     name: 111
     description: 111111
-    iconPath: Prefabs/Item/Test
+    iconPath: Prefabs/Sprites/Test
     consumableType: 0
     targets: 00000000
     duration: 0
