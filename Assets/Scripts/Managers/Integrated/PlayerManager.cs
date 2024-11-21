@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour, IManager
 {
     public Player Player;
     public EnemyObjectPool EnemyPool;
+    public List<int> InventoryData;
 
     public void Init()
     {
@@ -16,5 +17,6 @@ public class PlayerManager : MonoBehaviour, IManager
     {
         Application.targetFrameRate = 60;
         EnemyPool = this.gameObject.AddComponent<EnemyObjectPool>();
+        InventoryData = new List<int>();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using EnumTypes;
 
-public class Item : MonoBehaviour
+public class Item
 {
     public ItemData ItemData;
     public bool isEquipped;

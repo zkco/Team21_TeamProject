@@ -47,10 +47,14 @@ public class AttackRange : MonoBehaviour
     private void Attack()
     {
         if (_target == null) return;
-        foreach (Enemy enemy in _target)
+        else
         {
-            if (_target.Count < 1) return;
-            enemy?.Controller.GetDamage(Managers.PlayerManager.Player.Status.Damage);
+            foreach (Enemy enemy in _target)
+            {
+                if (_target.Count < 1) return;
+                enemy?.Controller.GetDamage(Managers.PlayerManager.Player.Status.Damage);
+            }
         }
+       
     }
 }
