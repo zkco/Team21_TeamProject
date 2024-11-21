@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIItemSlot : MonoBehaviour
+public class UIShopSlot : MonoBehaviour
 {
     [SerializeField] private Image imgIcon;
     [SerializeField] private Outline outline;

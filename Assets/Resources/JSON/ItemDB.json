@@ -2,8 +2,9 @@
     "items": [
         {
             "id": 1001,
+            "type": 0,
             "name": "HP 포션",
-            "description": "체력을 소량 회복시킵니다..",
+            "description": "체력을 소량 회복시킵니다.",
             "iconPath": "Sprite/Items/Consumables/Redpotion",
             "consumableType": 0,
             "targets": [
@@ -13,13 +14,14 @@
             "values": [
                 30.0
             ],
-            "equipType": 0,
+            "equipType": 3,
             "levelLimit": 0
         },
         {
             "id": 1002,
+            "type": 0,
             "name": "MP 포션",
-            "description": "마나를 소량 회복시킵니다..",
+            "description": "마나를 소량 회복시킵니다.",
             "iconPath": "Sprite/Items/Consumables/Bluepotion",
             "consumableType": 0,
             "targets": [
@@ -29,14 +31,15 @@
             "values": [
                 30.0
             ],
-            "equipType": 0,
+            "equipType": 3,
             "levelLimit": 0
         },
         {
             "id": 2001,
+            "type": 1,
             "name": "그냥 검",
             "description": "기본적인 검 입니다.",
-            "iconPath": "Sprite/Items/Weapon/Sword",
+            "iconPath": "Sprite/Items/Weapon/Sword_A",
             "consumableType": 3,
             "targets": [
                 2
@@ -50,9 +53,10 @@
         },
         {
             "id": 2002,
-            "name": "그냥 창",
-            "description": "기본적인 창 입니다.",
-            "iconPath": "Sprite/Items/Weapon/Spear",
+            "type": 1,
+            "name": "좋은 검",
+            "description": "조금 더 좋은 검 입니다.",
+            "iconPath": "Sprite/Items/Weapon/Sword_B",
             "consumableType": 3,
             "targets": [
                 2
@@ -66,9 +70,10 @@
         },
         {
             "id": 2003,
+            "type": 1,
             "name": "그냥 갑옷",
             "description": "기본적인 갑옷 입니다.",
-            "iconPath": "Sprite/Items/Armour/Armour",
+            "iconPath": "Sprite/Items/Armor/Armor",
             "consumableType": 3,
             "targets": [
                 3

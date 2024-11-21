@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class UIShop : MonoBehaviour
+public class UIShop : BasePopup
 {
     [SerializeField] private TMP_Text txtTitle;
     [Header("Item Slots")]
     [SerializeField] private Transform slotRoot;
-    [SerializeField] private UIItemSlot uiItemSlot;
+    [SerializeField] private UIShopSlot uiItemSlot;
     [Header("infoBG")]
     [SerializeField] private TMP_Text txtItemName;
     [SerializeField] private TMP_Text txtItemDescription;
@@ -16,8 +16,8 @@ public class UIShop : MonoBehaviour
     [SerializeField] private TMP_Text txtPrice;
     [SerializeField] private Button buyButton;
 
-    private List<UIItemSlot> slotList = new List<UIItemSlot>();
-    private Stack<UIItemSlot> slotPool = new Stack<UIItemSlot>();
+    private List<UIShopSlot> slotList = new List<UIShopSlot>();
+    private Stack<UIShopSlot> slotPool = new Stack<UIShopSlot>();
 
     private int selectItemIndex;
 
@@ -34,7 +34,7 @@ public class UIShop : MonoBehaviour
         {
             var product = DataManager.ProductDb.Get(productId);
 
-            UIItemSlot slot;
+            UIShopSlot slot;
 
             if (slotPool.Count == 0)
                 slot = Instantiate(uiItemSlot, slotRoot);
