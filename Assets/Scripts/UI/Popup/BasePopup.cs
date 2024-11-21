@@ -17,7 +17,7 @@ public class BasePopup : MonoBehaviour
     /// </summary>
     public virtual void Close()
     {
-        //추후 UI 버튼 눌렀을 때 나올 소리 추가
+        Managers.SoundManager.PlaySFX(SFXType.Button);
         Managers.UIManager.CloseUI();
     }
 

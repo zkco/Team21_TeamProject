@@ -27,14 +27,13 @@ public class UIShop : BasePopup
     {
         uiItemSlot = Resources.Load<GameObject>(slotPath).GetComponent<UIShopSlot>();
         SetShop(ShopCode.EquipShopId);
-        gameObject.SetActive(false);
     }
 
     public void SetShop(int shopId)     // 상점 이름 표시,  상점 슬롯 추가
     {
         ShopData shopData = DataManager.ShopDb.Get(shopId);
 
-        txtTitle.text = shopData.shopName;
+        txtTitle.text = shopData.name;
 
         var productList = shopData.productList;
         foreach (var productId in productList)
@@ -57,6 +56,7 @@ public class UIShop : BasePopup
             slot.OnClickAction += SetText;
             slotList.Add(slot);
         }
+        
     }
 
     public void SetText(int productId)      // 상점 슬롯 누를 시 그 아이템 정보 텍스트 표시

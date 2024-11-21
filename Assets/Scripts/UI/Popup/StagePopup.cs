@@ -14,6 +14,7 @@ public class StagePopup : BasePopup
         // 오른쪽 화살표 입력
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
+            Debug.Log("rightArrow");
             Managers.SoundManager.PlaySFX(SFXType.selectStage);
             currentIndex++; // 현재 위치 증가
             currentIndex = Mathf.Clamp(currentIndex, 0, stages.Count - 1); // 0 ~ stages.Count-1 사이로 제한

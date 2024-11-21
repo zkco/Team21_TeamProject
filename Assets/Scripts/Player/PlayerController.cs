@@ -164,7 +164,7 @@ public class PlayerController : BasePopup
     {
         if(context.phase == InputActionPhase.Started && NearShop())
         {
-            
+            Managers.UIManager.CreateUI(UIType.ShopPopup);
         }
     }
 

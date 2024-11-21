@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class UIShopSlot : MonoBehaviour
 {
     [SerializeField] private Image imgIcon;
-    [SerializeField] private Image outline;
     [SerializeField] private Button buttonSlot;
     
     public Action<int> OnClickAction;
@@ -13,7 +12,6 @@ public class UIShopSlot : MonoBehaviour
 
     private void Start()
     {
-        outline.enabled = false;
         buttonSlot.onClick.AddListener(Click);
     }
 
@@ -27,11 +25,7 @@ public class UIShopSlot : MonoBehaviour
     public void Click()
     {
         OnClickAction?.Invoke(data.id);
-        ToggleOutline();
     }
 
-    public void ToggleOutline()
-    {
-        outline.enabled = !outline.enabled;
-    }
+
 }
