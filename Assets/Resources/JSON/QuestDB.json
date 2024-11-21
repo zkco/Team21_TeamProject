@@ -7,7 +7,8 @@
             "type": 0,
             "targetId": 7001,
             "number": 5,
-            "reward": 500
+            "reward": 500,
+            "nextQuestId": 10002
         },
         {
             "id": 10002,
@@ -16,7 +17,8 @@
             "type": 0,
             "targetId": 7002,
             "number": 5,
-            "reward": 600
+            "reward": 600,
+            "nextQuestId": 10003
         }
     ]
 }

@@ -149,6 +149,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnTestQuest(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Managers.QuestManager.UpdateQuestProgress(1);
+        }
+    }
     private void DownJump()
     {
         if (OnGround() == true && OnPlatform() == true)
