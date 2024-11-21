@@ -122,11 +122,12 @@ public class UIManager : MonoBehaviour,IManager
             return;
         }
         // 스택에 하나의 UI만 남아있다면 추가 작업 없이 종료
-        if (depth.Count == 1)
-        {
-            return;
-        }
+        //if (depth.Count == 1)
+        //{
+        //    return;
+        //}
         //stack 최상단에 저장된 Basepopup을 꺼내와서 파괴한다.
+
         Destroy(depth.Pop().gameObject);
 
         // 스택에 최상단 UI가 남아있다면, 그 UI를 다시 활성화
