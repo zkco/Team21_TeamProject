@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 694520224981627773}
   - component: {fileID: 4585057057790994053}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtShopName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,15 +317,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 35
-    m_Right: 5
-    m_Top: 10
+    m_Left: 30
+    m_Right: 30
+    m_Top: 35
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 220, y: 250}
-  m_Spacing: {x: 35, y: 15}
+  m_CellSize: {x: 140, y: 145}
+  m_Spacing: {x: 30, y: 15}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &1068867966144330902
@@ -683,6 +683,7 @@ GameObject:
   - component: {fileID: 8642403693799639840}
   - component: {fileID: 7369979892012668369}
   - component: {fileID: 8190582787554829368}
+  - component: {fileID: 7064913446598390737}
   m_Layer: 5
   m_Name: ShopPopup
   m_TagString: Untagged
@@ -773,6 +774,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7064913446598390737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3964079570616075327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cccb470f50e62d42b3a10b2d9248c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtTitle: {fileID: 4585057057790994053}
+  slotRoot: {fileID: 4048002508066734849}
+  uiItemSlot: {fileID: 0}
+  txtItemName: {fileID: 7203979188820533168}
+  txtItemDescription: {fileID: 4876750944199191741}
+  txtStatName: {fileID: 812195409951497070}
+  txtStatValue: {fileID: 6697862459108560100}
+  txtPrice: {fileID: 6645139237320393058}
+  buyButton: {fileID: 840778035718318589}
 --- !u!1 &4168935109278551021
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,6 +36,7 @@ public class PlayerController : BasePopup
     private float _lastAttackTime;
     private float _lastDamagedTime;
 
+    
     private void Awake()
     {
         _cam = Camera.main;
@@ -156,6 +157,20 @@ public class PlayerController : BasePopup
         {
             Managers.QuestManager.UpdateQuestProgress(1);
         }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started && NearShop())
+        {
+            
+        }
+    }
+
+    private bool NearShop()
+    {
+        Transform shopTransform = transform; // 상점 위치 할당 해야함
+        return Vector3.Distance(transform.position, shopTransform.position) < 5f;
     }
     private void DownJump()
     {
