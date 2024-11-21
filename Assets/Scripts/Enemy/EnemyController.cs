@@ -47,4 +47,17 @@ public class EnemyController : MonoBehaviour
         Enemy.Animator.SetTrigger("Dead");
         this.gameObject.SetActive(false);
     }
+
+    public int GetGold()
+    {
+        return Enemy.Gold;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.TryGetComponent<PlayerController>(out PlayerController Player))
+        {
+            Player.GetDamage(Enemy.Damage);
+        }
+    }
 }
