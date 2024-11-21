@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     //이동 관련 옵션
     public float JumpPower;
     private float _moveDir;
+    private bool _canMove;
 
     //점프 관련 옵션
     public LayerMask Platform;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     //공격 관련
     private float _lastAttackTime;
-    private bool _attackPossible;
+    private float _lastDamagedTime;
 
     private void Awake()
     {
@@ -47,11 +48,13 @@ public class PlayerController : MonoBehaviour
         _animator = Player.Animator;
         AttackAction += AttackAnim;
         StartCoroutine(CoPlayerChecker());
+        _canMove = true;
     }
 
     private void Update()
     {
-        AttackRateLogic();
+        _lastAttackTime += Time.deltaTime;
+        _lastDamagedTime += Time.deltaTime;
         Debug.DrawRay(new Vector2(Player.transform.position.x, Player.transform.position.y - 1), Vector2.up * 1.5f, Color.red);
         Debug.DrawRay(new Vector2(Player.transform.position.x - 0.5f, Player.transform.position.y), Vector2.right, Color.red);
         Debug.DrawRay(new Vector2(Player.transform.position.x, Player.transform.position.y - 0.8f), Vector2.up * 1.4f, Color.red, 1f);
@@ -59,38 +62,18 @@ public class PlayerController : MonoBehaviour
 
     private void AttackAnim()
     {
-        if (_attackPossible == true)
-        {
-            _animator.SetBool("Attacking", true);
-            _lastAttackTime = 0;
-        }
-    }
-
-    private void AttackRateLogic()
-    {
-        _lastAttackTime += Time.deltaTime;
-        if (_lastAttackTime >= Player.Status.AttackRate)
-        {
-            _attackPossible = true;
-        }
-        else
-        {
-            if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Attack"))
-            {
-                if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                {
-                    _attackPossible = false;
-                    _animator.SetBool("Attacking", false);
-                }
-            }
-        }
+        _animator.SetTrigger("Attacking");
+        _lastAttackTime = 0;
     }
 
     private void FixedUpdate()
     {
-        Move();
-        Look();
-        CameraMove();
+        if(_canMove == true)
+        {
+            Move();
+            Look();
+            CameraMove();
+        }
     }
 
     private IEnumerator CoPlayerChecker()
@@ -127,7 +110,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started 
+            && _canMove == true)
         {
             Jump();
         }
@@ -135,15 +119,19 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started 
+            && _lastAttackTime >= Player.Status.AttackRate 
+            && _canMove == true)
         {
+            _lastAttackTime = 0f;
             AttackAction?.Invoke();
         }
     }
 
     public void OnDown(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started 
+            && _canMove == true)
         {
             DownJump();
         }
@@ -158,7 +146,8 @@ public class PlayerController : MonoBehaviour
     }
     private void DownJump()
     {
-        if (OnGround() == true && OnPlatform() == true)
+        if (OnGround() == true 
+            && OnPlatform() == true)
         {
             Player.Collider.isTrigger = true;
             _downJump = true;
@@ -190,8 +179,8 @@ public class PlayerController : MonoBehaviour
 
     private bool IsPassable()
     {
-        RaycastHit2D[] detector = 
-            { 
+        RaycastHit2D[] detector =
+            {
                 Physics2D.Raycast(new Vector2(Player.transform.position.x, Player.transform.position.y - 0.8f), Vector2.up, 1.4f, Platform),
                 Physics2D.Raycast(new Vector2(Player.transform.position.x - 0.5f, Player.transform.position.y), Vector2.right, 1f, Platform)
             };
@@ -242,10 +231,12 @@ public class PlayerController : MonoBehaviour
         if (_mousePos.x > Player.transform.position.x)
         {
             Player.Renderer.flipX = false;
+            Player.WeaponPivot.transform.position = new Vector2(Player.transform.position.x + 1f, Player.transform.position.y);
         }
         else
         {
             Player.Renderer.flipX = true;
+            Player.WeaponPivot.transform.position = new Vector2(Player.transform.position.x - 1f, Player.transform.position.y);
         }
     }
 
@@ -259,17 +250,25 @@ public class PlayerController : MonoBehaviour
     }
 
     //피격 구현 시 구독
-    private void Hitted()
+    public void GetDamage(int damage)
     {
-        _animator.SetTrigger("Hitted");
+        if(_lastDamagedTime > 1 && _canMove == true)
+        {
+            _lastDamagedTime = 0;
+            _animator.SetTrigger("Hitted");
+            Player.Status.Hp -= damage;
+        }
+        Dead();
     }
 
     private void Dead()
     {
-        if(Player.Status.Hp <= 0)
+        if (Player.Status.Hp <= 0)
         {
             _animator.SetTrigger("Dead");
             PlayerDead?.Invoke();
+            Managers.PlayerManager.EnemyPool.DeSpawnAllEnemy();
+            _canMove = false;
         }
     }
 }

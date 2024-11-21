@@ -6,7 +6,12 @@ using UnityEngine;
 public class AttackRange : MonoBehaviour
 {
     private Collider2D _collider;
-    private List<Enemy> _target;
+    [SerializeField] private List<Enemy> _target;
+
+    private void Awake()
+    {
+        _collider = GetComponent<Collider2D>();
+    }
 
     private void Start()
     {
@@ -15,14 +20,24 @@ public class AttackRange : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy);
+        if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         _target.Add(enemy);
+        return;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy);
-        _target.Remove(enemy);
+        foreach (Enemy listEnemy in _target)
+        {
+            if(collision.gameObject.TryGetComponent<Enemy>(out Enemy detectedEnemy))
+            {
+                if(listEnemy == detectedEnemy)
+                {
+                    _target.Remove(detectedEnemy);
+                    return;
+                }
+            }
+        }
     }
 
     private void Attack()
@@ -30,7 +45,8 @@ public class AttackRange : MonoBehaviour
         if (_target == null) return;
         foreach (Enemy enemy in _target)
         {
-            enemy.Controller.GetDamage(Managers.PlayerManager.Player.Status.Damage);
+            enemy?.Controller.GetDamage(Managers.PlayerManager.Player.Status.Damage);
+            if (enemy == null) _target.Remove(enemy);
         }
     }
 }
