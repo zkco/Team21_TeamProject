@@ -4,13 +4,7 @@ using EnumTypes;
 public class Item : MonoBehaviour
 {
     public ItemData ItemData;
-    private Player player;
     public bool isEquipped;
-
-    private void Start()
-    {
-        player = Managers.PlayerManager.Player;
-    }
 
     public void SetData(ProductData productData)        // 아이템 데이터 저장
     {
@@ -23,26 +17,26 @@ public class Item : MonoBehaviour
         {
             for (int i = 0; i < ItemData.targets.Count; i++)
             {
-                player.Status.AddValueTemp(ItemData.targets[i].ToString().ToLower(), ItemData.values[i]);
+                Managers.PlayerManager.Player.Status.AddValueTemp(ItemData.targets[i].ToString().ToLower(), ItemData.values[i]);
             }
         }
         else if (ItemData.consumableType == ConsumableType.Buff)  // 버프형일때
         {
             for (int i = 0; i < ItemData.targets.Count; i++)
             {
-                player.Status.AddBuff(ItemData.targets[i].ToString().ToLower(), ItemData.values[i], 10f);
+                Managers.PlayerManager.Player.Status.AddBuff(ItemData.targets[i].ToString().ToLower(), ItemData.values[i], 10f);
             }
         }
         else return;
     }
     public void Equip()             // 장비 아이템 착용
     {
-        if (ItemData.levelLimit > player.Status.Lv)
+        if (ItemData.levelLimit > Managers.PlayerManager.Player.Status.Lv)
         {
             Debug.Log("레벨이 낮아 착용할 수 없습니다.");
             return;
         }
-        foreach (Item item in player.Status.EquippedItem)
+        foreach (Item item in Managers.PlayerManager.Player.Status.EquippedItem)
         {
             if (item.ItemData.equipType == this.ItemData.equipType)
             {
@@ -50,25 +44,19 @@ public class Item : MonoBehaviour
             }
         }
         isEquipped = true;
-        player.Status.EquippedItem.Add(this);
-        player.Status.AddEquippedItemValue();
+        Managers.PlayerManager.Player.Status.EquippedItem.Add(this);
+        Managers.PlayerManager.Player.Status.AddEquippedItemValue();
     }
     public void Unequip(Item isequippedItem)           // 장비 아이템 해제
     {
-        foreach (Item item in player.Status.EquippedItem)
+        foreach (Item item in Managers.PlayerManager.Player.Status.EquippedItem)
         {
             if (item == isequippedItem)
             {
                 isEquipped = false;
-                player.Status.EquippedItem.Remove(item);
-                player.Status.AddEquippedItemValue();
+                Managers.PlayerManager.Player.Status.EquippedItem.Remove(item);
+                Managers.PlayerManager.Player.Status.AddEquippedItemValue();
             }
         }
-    }
-
-    public void Remove()
-    {
-        Unequip(this);
-        Destroy(this);
     }
 }

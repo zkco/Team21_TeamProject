@@ -1,7 +1,9 @@
+using System.Data.Common;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int ID;
     public int HP;
     public int MaxHP;
     public int Damage;

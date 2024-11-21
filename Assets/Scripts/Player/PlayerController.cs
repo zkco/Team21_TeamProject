@@ -137,6 +137,19 @@ public class PlayerController : BasePopup
         }
     }
 
+    public void OnCallInventory(InputAction.CallbackContext context)
+    {
+        if(Managers.PlayerManager.Player.Inventory == null)
+        {
+            GameObject Inventorypopup = Instantiate(Resources.Load<GameObject>("Prefabs/UI/UI/Slice/InventoryPopup"));
+        }
+        if(Player.Inventory.gameObject.activeSelf == false)
+        {
+            Player.Inventory.gameObject.SetActive(true);
+        }
+        else Player.Inventory.gameObject.SetActive(false);
+    }
+
     public void OnTestQuest(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
