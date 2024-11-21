@@ -2,14 +2,14 @@ namespace EnumTypes
 {
     public enum ItemType
     {
-        Consumable, // ï¿½Ò¸ï¿½Ç°
-        Equipable       // ï¿½ï¿½ï¿½
+        Consumable,     // ¼Ò¸ðÇ°
+        Equipable       // Àåºñ
     }
 
     public enum ConsumableType
     {
-        Instant,    // ï¿½ï¿½ï¿½ï¿½ï¿½
-        Buff,       // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        Instant,    // Áï½Ã ¹ßµ¿
+        Buff,       // Áö¼Ó½Ã°£ Æ÷¼Ç
         OTHER
     }
 
