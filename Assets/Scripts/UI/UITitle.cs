@@ -8,7 +8,8 @@ public class UITitle : MonoBehaviour
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene("Stagetown");
+        Managers.SoundManager.PlaySFX(SFXType.Button);
+        SceneManagerEx.LoadScene(SceneType.Town);
     }
 
     public void OnQuitButton()
