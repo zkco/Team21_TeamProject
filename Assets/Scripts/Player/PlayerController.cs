@@ -150,6 +150,13 @@ public class PlayerController : MonoBehaviour
         else Player.Inventory.gameObject.SetActive(false);
     }
 
+    public void OnTestQuest(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Managers.QuestManager.UpdateQuestProgress(1);
+        }
+    }
     private void DownJump()
     {
         if (OnGround() == true 

@@ -4061,6 +4061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1783533491549542123}
+  - component: {fileID: 8550177615566623252}
   m_Layer: 5
   m_Name: UIQuest
   m_TagString: Untagged
@@ -4093,6 +4094,22 @@ RectTransform:
   m_AnchoredPosition: {x: -143, y: -186}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
+--- !u!114 &8550177615566623252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715732253487757371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6819b5e1b38ed5b458f58e81513c68d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtQuestName: {fileID: 7878549451669759364}
+  txtQuestDescription: {fileID: 6837574204299028291}
+  txtnumber: {fileID: 1352465670582474224}
+  txtTargetNumber: {fileID: 8391597102520606757}
 --- !u!1 &3737745705620807164
 GameObject:
   m_ObjectHideFlags: 0

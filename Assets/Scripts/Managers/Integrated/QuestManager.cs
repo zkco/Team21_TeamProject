@@ -33,6 +33,10 @@ public class QuestManager : MonoBehaviour, IManager
         quest.UpdateProgress(amount);
     }
 
+    public void UpdateQuestProgress(int amount)         // 현재 퀘스트 진행
+    {
+        curQuest.UpdateProgress(amount);
+    }
 
     /// <summary>
     /// 퀘스트 완료 시 호출되는 함수

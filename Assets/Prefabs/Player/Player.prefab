@@ -190,6 +190,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 69745eae-5bcb-417c-bdd0-e520f9474603
     m_ActionName: Player/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1910975464564496066}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnTestQuest
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 15aed4c9-0350-4a5c-a889-b4b7ea60a512
+    m_ActionName: Player/QuestTest[/Keyboard/6]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -208,7 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Speed: 5
   JumpPower: 10
   Platform:
     serializedVersion: 2
@@ -227,11 +242,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderer: {fileID: 0}
   Controller: {fileID: 0}
-  WeaponPivot: {fileID: 0}
   Rigidbody: {fileID: 0}
   Collider: {fileID: 0}
   Status: {fileID: 0}
   Animator: {fileID: 0}
+  Condition: {fileID: 0}
+  WeaponPivot: {fileID: 0}
+  Inventory: {fileID: 0}
 --- !u!95 &7574817801736347599
 Animator:
   serializedVersion: 5
