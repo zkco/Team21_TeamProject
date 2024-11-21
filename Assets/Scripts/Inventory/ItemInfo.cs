@@ -1,3 +1,4 @@
+using EnumTypes;
 using System;
 using System.Text;
 using TMPro;
@@ -26,6 +27,7 @@ public class ItemInfo : MonoBehaviour
     private void Start()
     {
         Inventory = Managers.PlayerManager.Player.Inventory;
+        ChangeUIInfo();
     }
 
     public void ChangeUIInfo()
@@ -45,13 +47,13 @@ public class ItemInfo : MonoBehaviour
             ItemName.text = item.ItemData.name;
             ItemDescription.text = item.ItemData.description;
             //ItemPrice.text = item.ItemData.price;
-            
+
             if (item.ItemData.type == EnumTypes.ItemType.Consumable)
             {
-                switch(item.ItemData.consumableType)
+                switch (item.ItemData.consumableType)
                 {
                     case EnumTypes.ConsumableType.Instant:
-                        sN.Append("Instant \n");
+                        sN.Append(item.ItemData.consumableType.ToString());
                         sV.Append('\n');
                         break;
                     case EnumTypes.ConsumableType.Buff:
@@ -66,24 +68,9 @@ public class ItemInfo : MonoBehaviour
             }
             else if (item.ItemData.type == EnumTypes.ItemType.Equipable)
             {
-                switch(item.ItemData.equipType)
-                {
-                    case EnumTypes.EquipType.Weapon:
-                        sN.Append("EquipType \n");
-                        sV.Append(item.ItemData.equipType.ToString());
-                        sV.Append('\n');
-                        break;
-                    case EnumTypes.EquipType.Armor:
-                        sN.Append("EquipType \n");
-                        sV.Append(item.ItemData.equipType.ToString());
-                        sV.Append('\n');
-                        break;
-                    case EnumTypes.EquipType.Accessory:
-                        sN.Append("EquipType \n");
-                        sV.Append(item.ItemData.equipType.ToString());
-                        sV.Append('\n');
-                        break;
-                }
+                sN.Append("EquipType \n");
+                sV.Append(item.ItemData.equipType.ToString());
+                sV.Append('\n');
                 sN.Append("Level Limit \n");
                 sV.Append(item.ItemData.levelLimit.ToString());
                 sV.Append('\n');

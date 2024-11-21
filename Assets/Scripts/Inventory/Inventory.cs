@@ -24,10 +24,6 @@ public class Inventory : MonoBehaviour
         }
 
         LoadInventoryData(Managers.PlayerManager.InventoryData);
-        ProductData data = DataManager.ProductDb.Get(3001);
-        Item ItemInstance = new Item();
-        ItemInstance.SetData(data);
-        SetItem(ItemInstance);
     }
 
     /// <summary>
