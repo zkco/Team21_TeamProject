@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Constants;
 public class UIShop : BasePopup
 {
     [SerializeField] private TMP_Text txtTitle;
@@ -20,8 +21,14 @@ public class UIShop : BasePopup
     private Stack<UIShopSlot> slotPool = new Stack<UIShopSlot>();
 
     private int selectItemIndex;
+    private string slotPath = "Prefabs/UI/UI/Slot";
 
-
+    private void Start()
+    {
+        uiItemSlot = Resources.Load<GameObject>(slotPath).GetComponent<UIShopSlot>();
+        SetShop(ShopCode.EquipShopId);
+        gameObject.SetActive(false);
+    }
 
     public void SetShop(int shopId)     // 상점 이름 표시,  상점 슬롯 추가
     {
@@ -60,6 +67,7 @@ public class UIShop : BasePopup
         txtItemDescription.text = data.description;
         txtPrice.text = DataManager.ProductDb.Get(productId).price.ToString() + " G";
         txtStatName.text = string.Empty;
+        txtStatValue.text = string.Empty;
         for (int i = 0; i < data.targets.Count; i++)
         {
             txtStatName.text += data.targets[i].ToString() + "\n";

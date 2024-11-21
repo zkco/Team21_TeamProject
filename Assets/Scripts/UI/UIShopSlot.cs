@@ -5,11 +5,12 @@ using UnityEngine.UI;
 public class UIShopSlot : MonoBehaviour
 {
     [SerializeField] private Image imgIcon;
-    [SerializeField] private Outline outline;
+    [SerializeField] private Image outline;
     [SerializeField] private Button buttonSlot;
     
     public Action<int> OnClickAction;
     private ProductData data;
+
     private void Start()
     {
         outline.enabled = false;
