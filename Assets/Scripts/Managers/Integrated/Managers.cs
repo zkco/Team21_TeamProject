@@ -41,8 +41,8 @@ public sealed class Managers : MonoBehaviour
 
         instance.uiManager = CreateManager<UIManager>(gameObject.transform);
         instance.soundManager = CreateManager<SoundManager>(gameObject.transform);
-        instance.playerManager = CreateManager<PlayerManager>(gameObject.transform);
         instance.dataManager = CreateManager<DataManager>(gameObject.transform);
+        instance.playerManager = CreateManager<PlayerManager>(gameObject.transform);
         instance.questManager = CreateManager<QuestManager>(gameObject.transform);
     }
 

@@ -1,5 +1,7 @@
 using EnumTypes;
+using System;
 
+[Serializable]
 public class QuestData : DataModel
 {
     public string name;
