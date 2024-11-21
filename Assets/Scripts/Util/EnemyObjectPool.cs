@@ -63,7 +63,7 @@ public class EnemyObjectPool : MonoBehaviour
     public void GetActiveScene(Scene scene, LoadSceneMode mode)
     {
         int stage = 0;
-        switch (SceneManager.GetActiveScene().ToString())
+        switch (SceneManager.GetActiveScene().name)
         {
             case "Stage1": stage = 1; break;
             case "Stage2": stage = 2; break;

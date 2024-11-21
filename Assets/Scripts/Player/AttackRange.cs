@@ -36,6 +36,10 @@ public class AttackRange : MonoBehaviour
                     _target.Remove(detectedEnemy);
                     return;
                 }
+                if(listEnemy == null)
+                {
+                    _target.Remove(listEnemy);
+                }
             }
         }
     }
@@ -45,8 +49,8 @@ public class AttackRange : MonoBehaviour
         if (_target == null) return;
         foreach (Enemy enemy in _target)
         {
+            if (_target.Count < 1) return;
             enemy?.Controller.GetDamage(Managers.PlayerManager.Player.Status.Damage);
-            if (enemy == null) _target.Remove(enemy);
         }
     }
 }
