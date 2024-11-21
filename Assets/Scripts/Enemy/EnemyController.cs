@@ -4,6 +4,7 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class EnemyController : MonoBehaviour
 {
+    public event Func<int> IsDead;
     public Enemy Enemy;
     private bool _followPlayer;
     private float _distanceToPlayer;
@@ -13,6 +14,11 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         Enemy = GetComponent<Enemy>();
+    }
+
+    private void Start()
+    {
+        IsDead += GetId;
     }
 
     private void Update()
@@ -46,6 +52,7 @@ public class EnemyController : MonoBehaviour
     {
         Enemy.Animator.SetTrigger("Dead");
         this.gameObject.SetActive(false);
+        IsDead.Invoke();
     }
 
     public int GetGold()
@@ -59,5 +66,10 @@ public class EnemyController : MonoBehaviour
         {
             Player.GetDamage(Enemy.Damage);
         }
+    }
+
+    private int GetId()
+    {
+        return Enemy.ID;
     }
 }
