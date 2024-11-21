@@ -2,7 +2,9 @@ using EnumTypes;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemyObjectPool : MonoBehaviour
@@ -27,6 +29,8 @@ public class EnemyObjectPool : MonoBehaviour
             SpawnPosition.Enqueue(pos);
             obj.SetActive(false);
         }
+
+        SceneManagerEx.OnLoadCompleted(GetActiveScene);
     }
 
     /// <summary>
@@ -54,6 +58,20 @@ public class EnemyObjectPool : MonoBehaviour
         {
             obj.SetActive(false);
         }
+    }
+
+    public void GetActiveScene(Scene scene, LoadSceneMode mode)
+    {
+        int stage = 0;
+        switch (SceneManager.GetActiveScene().ToString())
+        {
+            case "Stage1": stage = 1; break;
+            case "Stage2": stage = 2; break;
+            case "Stage3": stage = 3; break;
+            default: stage = 0;  break;
+        }
+        DeSpawnAllEnemy();
+        SpawnWithStagePosition(stage);
     }
 }
 
