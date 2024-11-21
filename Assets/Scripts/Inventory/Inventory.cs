@@ -90,4 +90,14 @@ public class Inventory : MonoBehaviour
             slot.Regen();
         }
     }
+
+    public List<int> GetID()
+    {
+        var ids = new List<int>();
+        foreach(Slot slot in Slots)
+        {
+            ids.Add(slot.item.ItemData.id);
+        }
+        return ids;
+    }
 }
