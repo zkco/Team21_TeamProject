@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
         Collider = GetComponent<Collider2D>();
         Animator = GetComponentInChildren<Animator>();
         Status = GetComponent<PlayerStatus>();
-        Inventory = FindObjectOfType<Inventory>().GetComponent<Inventory>();
         //Renderer.sprite = Status.PlayerSprite;
     }
 }

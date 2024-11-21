@@ -31,22 +31,26 @@ public class SlotButton : MonoBehaviour
     {
         Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
         slot.EquipItem();
+        _itemInfo.ChangeUIInfo();
     }
 
     public void UnequipItem()
     {
         Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
         slot.UnequipItem();
+        _itemInfo.ChangeUIInfo();
     }
 
     public void RemoveItem()
     {
         Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
         slot.RemoveItem();
+        _itemInfo.ChangeUIInfo();
     }
     public void UseItem()
     {
         Slot slot = Managers.PlayerManager.Player.Inventory.GetSlot(GetInfoCode());
         slot.Use();
+        _itemInfo.ChangeUIInfo();
     }
 }

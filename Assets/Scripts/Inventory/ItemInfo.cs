@@ -15,6 +15,10 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ItemDescription;
     [SerializeField] private TextMeshProUGUI StatName;
     [SerializeField] private TextMeshProUGUI StatValue;
+    [SerializeField] private GameObject UseButton;
+    [SerializeField] private GameObject EquipButton;
+    [SerializeField] private GameObject UnEquipButton;
+    [SerializeField] private GameObject RemoveButton;
     private StringBuilder sN = new StringBuilder();
     private StringBuilder sV = new StringBuilder();
     public int CurCode;
@@ -26,10 +30,15 @@ public class ItemInfo : MonoBehaviour
 
     public void ChangeUIInfo()
     {
+        UseButton.SetActive(false);
+        EquipButton.SetActive(false);
+        UseButton.SetActive(false);
+        RemoveButton.SetActive(false);
         sN.Clear();
         sV.Clear();
         if (Inventory.GetItem(CurCode) != null)
         {
+            RemoveButton.SetActive(true);
             Slot slot = Inventory.GetSlot(CurCode);
             Item item = slot.GetItem(CurCode);
             Icon = slot.itemImage;
@@ -53,6 +62,7 @@ public class ItemInfo : MonoBehaviour
                     default:
                         break;
                 }
+                UseButton.SetActive(true);
             }
             else if (item.ItemData.type == EnumTypes.ItemType.Equipable)
             {
@@ -77,6 +87,14 @@ public class ItemInfo : MonoBehaviour
                 sN.Append("Level Limit \n");
                 sV.Append(item.ItemData.levelLimit.ToString());
                 sV.Append('\n');
+                if (item.isEquipped == true)
+                {
+                    UnEquipButton.SetActive(true);
+                }
+                else
+                {
+                    EquipButton.SetActive(true);
+                }
             }
             foreach (EnumTypes.TargetStat target in item.ItemData.targets)
             {
@@ -91,7 +109,18 @@ public class ItemInfo : MonoBehaviour
             StatName.text = sN.ToString();
             StatValue.text = sV.ToString();
         }
-        else return;
+        else
+        {
+            Icon = null;
+            ItemName.text = null;
+            ItemDescription.text = null;
+            StatName.text = null;
+            StatValue.text = null;
+            UseButton.SetActive(false);
+            EquipButton.SetActive(false);
+            UnEquipButton.SetActive(false);
+            RemoveButton.SetActive(false);
+        }
         return;
     }
 }

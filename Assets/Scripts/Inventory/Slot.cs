@@ -69,12 +69,13 @@ public class Slot : MonoBehaviour
     public void Use()
     {
         item?.Use();
+        this.item = null;
     }
 
     public void RemoveItem()
     {
         item?.Unequip(item);
-        item?.Remove();
+        this.item = null;
     }
 
     private void isEquipped()

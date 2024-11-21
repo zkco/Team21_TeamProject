@@ -6,6 +6,12 @@ public class Inventory : MonoBehaviour
 {
     public Queue<Slot> Slots = new Queue<Slot>();
 
+    private void Awake()
+    {
+        if (Managers.PlayerManager.Player.Inventory == null)
+            Managers.PlayerManager.Player.Inventory = this;
+    }
+
     private void Start()
     {
         Slot[] slots = GetComponentsInChildren<Slot>();
@@ -16,6 +22,8 @@ public class Inventory : MonoBehaviour
             slot.code = i;
             i++;
         }
+
+        SetItem(Resources.Load<GameObject>("Prefabs/Item/TestItem").GetComponent<Item>());
     }
 
     /// <summary>
