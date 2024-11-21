@@ -22,7 +22,6 @@ public class EnemyObjectPool : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load<GameObject>(EnemiesData[i].path));
             Vector2 pos = new Vector2(EnemiesData[i].XPos, EnemiesData[i].YPos);
             obj.GetComponent<Enemy>().WhichStage = EnemiesData[i].stage;
-            DontDestroyOnLoad(obj);
             Enemies.Enqueue(obj);
             SpawnPosition.Enqueue(pos);
             obj.SetActive(false);
