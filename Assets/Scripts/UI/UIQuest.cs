@@ -3,15 +3,21 @@ using TMPro;
 public class UIQuest : MonoBehaviour
 {
     private Quest quest;
-    private TMP_Text txtQuestName;
-    private TMP_Text txtQuestDescription;
-    private TMP_Text txtnumber;
-    private TMP_Text txtTargetNumber;
+    [SerializeField] private TMP_Text txtQuestName;
+    [SerializeField] private TMP_Text txtQuestDescription;
+    [SerializeField] private TMP_Text txtnumber;
+    [SerializeField] private TMP_Text txtTargetNumber;
 
-    
-    private void UpdateQuest()                  // 새 퀘스트로 바뀔 때 업데이트
+    private void Start()
     {
-        //quest = QuestManager.curQuest;                
+        Managers.QuestManager.uiQuest = this;
+        quest = Managers.QuestManager.curQuest;
+        Managers.QuestManager.AddProgressAction();
+        UpdateUI();
+    }
+    public void UpdateQuest()                  // 새 퀘스트로 바뀔 때 업데이트
+    {
+        quest = Managers.QuestManager.curQuest;
         UpdateUI();
     }
     public void UpdateUI()                      // 퀘스트 진행상황 업데이트

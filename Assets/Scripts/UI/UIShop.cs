@@ -81,6 +81,6 @@ public class UIShop : MonoBehaviour
         Item itemInstance = new Item();
         itemInstance.SetData(data);
         Managers.PlayerManager.Player.Inventory.SetItem(itemInstance);
-        
+        Managers.SoundManager.PlaySFX(SFXType.buyShop);
     }
 }
