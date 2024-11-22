@@ -162,7 +162,7 @@ public class PlayerController : BasePopup
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && NearShop())
+        if(context.phase == InputActionPhase.Started)
         {
             Managers.UIManager.CreateUI(UIType.ShopPopup);
         }

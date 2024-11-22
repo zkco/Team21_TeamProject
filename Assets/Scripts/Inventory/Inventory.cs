@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
     public List<Slot> Slots = new List<Slot>();
+    public TextMeshProUGUI Gold;
 
     private void Awake()
     {
@@ -23,7 +26,17 @@ public class Inventory : MonoBehaviour
             i++;
         }
 
+        ProductData data = DataManager.ProductDb.Get(3001);
+        Item itemInstance = new Item();
+        itemInstance.SetData(data);
+        Managers.PlayerManager.Player.Inventory.SetItem(itemInstance);
+
         LoadInventoryData(Managers.PlayerManager.InventoryData);
+    }
+
+    private void Update()
+    {
+        Gold.text = Managers.PlayerManager.Player.Status.Gold.ToString() + " G";
     }
 
     /// <summary>

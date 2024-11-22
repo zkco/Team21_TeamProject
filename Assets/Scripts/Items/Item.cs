@@ -13,8 +13,6 @@ public class Item
 
     public void Use()
     {
-        
-
         if (ItemData.consumableType == ConsumableType.Instant)       // 즉발형일때
         {
             for (int i = 0; i < ItemData.targets.Count; i++)
@@ -53,6 +51,7 @@ public class Item
     }
     public void Unequip(Item isequippedItem)           // 장비 아이템 해제
     {
+        if (ItemData.type == ItemType.Consumable) return;
 
         foreach (Item item in Managers.PlayerManager.Player.Status.EquippedItem)
         {
