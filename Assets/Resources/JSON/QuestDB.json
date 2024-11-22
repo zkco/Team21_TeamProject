@@ -2,8 +2,8 @@
     "items": [
         {
             "id": 10001,
-            "name": "?? 잡기",
-            "description": "??를 5마리 잡으시오.",
+            "name": "해골 잡기",
+            "description": "해골을 5마리 잡으시오.",
             "type": 0,
             "targetId": 7001,
             "number": 5,

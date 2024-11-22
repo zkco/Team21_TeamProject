@@ -36,7 +36,6 @@ public class PlayerController : BasePopup
     private float _lastAttackTime;
     private float _lastDamagedTime;
 
-    
     private void Awake()
     {
         _cam = Camera.main;
@@ -162,7 +161,7 @@ public class PlayerController : BasePopup
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && NearShop())
+        if(context.phase == InputActionPhase.Started && NearShop() && IsShopClosed())
         {
             Managers.UIManager.CreateUI(UIType.ShopPopup);
         }
@@ -170,9 +169,26 @@ public class PlayerController : BasePopup
 
     private bool NearShop()
     {
-        Transform shopTransform = transform; // 상점 위치 할당 해야함
-        return Vector3.Distance(transform.position, shopTransform.position) < 5f;
+        GameObject[] shopList = GameObject.FindGameObjectsWithTag("Shop");
+        if (shopList.Length == 0) return false;
+
+        foreach (GameObject shop in shopList)
+        {
+            if(Vector2.Distance(transform.position, shop.transform.position) < 2.5f)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
+
+    private bool IsShopClosed()
+    {
+        GameObject shopPopup = GameObject.FindWithTag("ShopUI");
+        return shopPopup == null;
+    }
+
     private void DownJump()
     {
         if (OnGround() == true

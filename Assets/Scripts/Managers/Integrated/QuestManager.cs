@@ -33,7 +33,7 @@ public class QuestManager : MonoBehaviour, IManager
         quest.UpdateProgress(amount);
     }
 
-    public void UpdateQuestProgress(int amount)         // 현재 퀘스트 진행
+    public void UpdateQuestProgress(int amount)         // 현재 퀘스트 진행, 테스트용
     {
         curQuest.UpdateProgress(amount);
     }
@@ -43,13 +43,15 @@ public class QuestManager : MonoBehaviour, IManager
     /// </summary>
     private void QuestComplete()                // 퀘스트 완료시 다음 퀘스트 진행시킴
     {
+        Managers.PlayerManager.Player.Status.AddValueTemp("gold", curQuest.data.reward);
+        Debug.Log($"{curQuest.data.reward} 골드 추가");
         if (curQuest.data.nextQuestId == QuestCode.EndQuestId)
         {
             Debug.Log("Quest End");
             uiQuest.gameObject.SetActive(false);
             return;
         }
-
+        
         curQuest = GetQuest(curQuest.data.nextQuestId);
         curQuest.StartQuest();
         uiQuest.UpdateQuest();

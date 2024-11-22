@@ -5,7 +5,7 @@ public class Quest
     public QuestData data;
     public int curProgress;
     public Action onProgressAction;
-    private bool isComplete;
+    //private bool isComplete;
     private bool onProgress;
     public Action onCompleteAction;
 
@@ -27,7 +27,7 @@ public class Quest
 
         if (curProgress >= data.number)
         {
-            isComplete = true;
+            //isComplete = true;
             onProgress = false;
             onCompleteAction?.Invoke();
         }

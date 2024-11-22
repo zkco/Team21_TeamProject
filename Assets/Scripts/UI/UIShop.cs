@@ -25,12 +25,18 @@ public class UIShop : BasePopup
 
     private void Start()
     {
+        Time.timeScale = 0f;
         uiItemSlot = Resources.Load<GameObject>(slotPath).GetComponent<UIShopSlot>();
         SetShop(ShopCode.EquipShopId);
-        buyButton.onClick.AddListener(BuyItem);
         InitializeText();
+        buyButton.onClick.AddListener(BuyItem);
     }
 
+    public override void Close()
+    {
+        Time.timeScale = 1f;
+        base.Close();
+    }
     public void SetShop(int shopId)     // 상점 이름 표시,  상점 슬롯 추가
     {
         ShopData shopData = DataManager.ShopDb.Get(shopId);
