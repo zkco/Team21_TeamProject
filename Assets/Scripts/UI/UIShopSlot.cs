@@ -7,6 +7,7 @@ public class UIShopSlot : MonoBehaviour
     [SerializeField] private Image imgIcon;
     [SerializeField] private Button buttonSlot;
     
+    public int index;
     public Action<int> OnClickAction;
     private ProductData data;
 
@@ -27,5 +28,9 @@ public class UIShopSlot : MonoBehaviour
         OnClickAction?.Invoke(data.id);
     }
 
+    public ProductData GetData()
+    {
+        return data;
+    }
 
 }
