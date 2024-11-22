@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
-    public Queue<Slot> Slots = new Queue<Slot>();
+    public List<Slot> Slots = new List<Slot>();
+    public TextMeshProUGUI Gold;
 
     private void Awake()
     {
@@ -18,12 +21,22 @@ public class Inventory : MonoBehaviour
         int i = 0;
         foreach (Slot slot in slots)
         {
-            Slots.Enqueue(slot);
+            Slots.Add(slot);
             slot.code = i;
             i++;
         }
 
-        SetItem(Resources.Load<GameObject>("Prefabs/Item/TestItem").GetComponent<Item>());
+        ProductData data = DataManager.ProductDb.Get(3001);
+        Item itemInstance = new Item();
+        itemInstance.SetData(data);
+        Managers.PlayerManager.Player.Inventory.SetItem(itemInstance);
+
+        LoadInventoryData(Managers.PlayerManager.InventoryData);
+    }
+
+    private void Update()
+    {
+        Gold.text = Managers.PlayerManager.Player.Status.Gold.ToString() + " G";
     }
 
     /// <summary>
@@ -88,6 +101,7 @@ public class Inventory : MonoBehaviour
         foreach(var slot in Slots)
         {
             slot.Regen();
+            SaveInventoryData();
         }
     }
 
@@ -96,8 +110,28 @@ public class Inventory : MonoBehaviour
         var ids = new List<int>();
         foreach(Slot slot in Slots)
         {
+            if(slot.item != null)
             ids.Add(slot.item.ItemData.id);
         }
         return ids;
+    }
+
+    private void SaveInventoryData()
+    {
+        Managers.PlayerManager.InventoryData = GetID();
+    }
+
+    public void LoadInventoryData(List<int> ids)
+    {
+        foreach(Slot slot in Slots)
+        {
+            if(slot.item != null)
+            slot.item = null;
+        }
+        for(int i = 0; i < ids.Count; i++)
+        {
+            Slots[i].item = new Item();
+            Slots[i].item.ItemData = DataManager.ItemDb.Get(ids[i]);
+        }
     }
 }

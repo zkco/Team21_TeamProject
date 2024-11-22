@@ -36,6 +36,7 @@ public class PlayerStatus : MonoBehaviour
     {
         Hp = maxHp;
         Mp = maxMp;
+        EquippedItem = new List<Item>();
     }
 
     private void Update()

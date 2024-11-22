@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using EnumTypes;
 
-public class Item : MonoBehaviour
+public class Item
 {
     public ItemData ItemData;
     public bool isEquipped;
 
+    public Item()
+    {
+        ItemData = null;
+        isEquipped = false;
+    }
     public void SetData(ProductData productData)        // 아이템 데이터 저장
     {
         ItemData = DataManager.ItemDb.Get(productData.itemId);
@@ -13,8 +18,6 @@ public class Item : MonoBehaviour
 
     public void Use()
     {
-        
-
         if (ItemData.consumableType == ConsumableType.Instant)       // 즉발형일때
         {
             for (int i = 0; i < ItemData.targets.Count; i++)
@@ -53,7 +56,8 @@ public class Item : MonoBehaviour
     }
     public void Unequip(Item isequippedItem)           // 장비 아이템 해제
     {
-
+        if (ItemData.type == ItemType.Consumable) return;
+        if (Managers.PlayerManager.Player.Status.EquippedItem == null) return;
         foreach (Item item in Managers.PlayerManager.Player.Status.EquippedItem)
         {
             if (item == isequippedItem)

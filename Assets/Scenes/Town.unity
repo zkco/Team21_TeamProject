@@ -4321,13 +4321,12 @@ MonoBehaviour:
   Mp: 40
   Exp: 80
   MaxExp: 100
-  Gold: 0
+  Gold: 500
   AddMaxHp: 0
   AddMaxMp: 0
   AddDamage: 0
   AddSpeed: 0
   AddAttackRate: 0
-  EquippedItem: []
 --- !u!114 &706269055
 MonoBehaviour:
   m_ObjectHideFlags: 0
