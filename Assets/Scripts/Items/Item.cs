@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using EnumTypes;
 
-public class Item : MonoBehaviour
+public class Item
 {
     public ItemData ItemData;
     public bool isEquipped;
 
+    public Item()
+    {
+        ItemData = null;
+        isEquipped = false;
+    }
     public void SetData(ProductData productData)        // 아이템 데이터 저장
     {
         ItemData = DataManager.ItemDb.Get(productData.itemId);
